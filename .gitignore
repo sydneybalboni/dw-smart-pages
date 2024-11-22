@@ -64,3 +64,6 @@ Pipfile.lock
 
 # Docker (Optional)
 docker-compose.override.yml
+
+# Python dependency managers
+Pipfile.lock
