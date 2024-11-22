@@ -1,0 +1,1 @@
+# dw-smart-pages
