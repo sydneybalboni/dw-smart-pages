@@ -1,0 +1,66 @@
+# Logs
+*.log
+logs/
+
+# Dependency directories (Frontend-specific, remove if unnecessary)
+node_modules/
+
+# Build output (Frontend-specific, remove if unnecessary)
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Package lock files (Frontend-specific, remove if unnecessary)
+package-lock.json
+yarn.lock
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cache and OS files
+.DS_Store
+Thumbs.db
+.cache/
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/
+
+# Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+
+# Virtual Environment
+venv/
+env/
+
+# Database files
+*.sqlite3
+*.db
+*.bak
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Python dependency managers
+poetry.lock
+Pipfile.lock
+
+# Docker (Optional)
+docker-compose.override.yml
