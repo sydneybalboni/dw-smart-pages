@@ -74,6 +74,7 @@ This repository contains both a frontend (Node.js-based) and a backend (Python F
    ```bash
    uvicorn main:app --reload
    ```
+   Alternatively, you can run `pipenv run uvicorn main:app --reload`
 
 5. The backend will run at `http://127.0.0.1:8000`. Interactive API documentation is available at:
    - Swagger UI: `http://127.0.0.1:8000/docs`
