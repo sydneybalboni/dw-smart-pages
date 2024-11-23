@@ -5,6 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Header.css";
 import discoveryWorldLogo from "../assets/Discovery-World.svg";
 import { FaUserCircle } from "react-icons/fa";
+import { TbHexagonPlusFilled } from "react-icons/tb";
 
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -46,6 +47,14 @@ const Header = () => {
           alt="Discovery World Logo"
           className="logo"
           onClick={() => goToPage("/")}
+        />
+      </div>
+      <h1 className="exhibit-name">EXHIBIT NAME</h1>
+
+      {/* Badge Icon and Dropdown */}
+      <div className="badges-button">
+        <TbHexagonPlusFilled
+        className="badges-icon"
         />
       </div>
 

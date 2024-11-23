@@ -21,9 +21,43 @@
 }
 
 .logo {
-  height: 40px; /* Slim header logo size */
-  width: auto; /* Maintain aspect ratio */
+  width: 140px;
+  height: auto;
 }
+
+/* Exhibit Name Styling */
+.exhibit-name {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;  /* Custom Google font */
+  color: #201c51;  /* Dark color for visibility */
+  margin: 0;
+  text-align: center; /* Ensure it's centered */
+}
+
+.badges-button {
+  position: absolute;
+  right:80px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badges-icon {
+  font-size: 2.75rem;
+  color: #201c51;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.badges-icon:hover {
+  color: #ef558b;
+}
+
+/* Google Font import (add this to the HTML or body tag) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 
 /* User Profile Container */
 .user-profile {
