@@ -1,0 +1,147 @@
+/* Trivia Section Container */
+:root {
+    --my-border-size:30px;
+    --my-dark-purple: #201c51;
+    --my-light-blue: #A3C9D1;
+    --my-pink: #F6A5C0;
+    --my-very-light-pink: #F9D5D8;
+    --my-dark-pink: #ef558b;
+  }
+.trivia-section {
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #b5dde4;
+    padding: 20px;
+    border-radius: var(--my-border-size);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+    margin-bottom: 40px;
+  }
+  
+  /* Header for the Trivia Section */
+  .trivia-section h2 {
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    color: var(--my-dark-purple);
+    margin-bottom: 20px;
+    /* margin-top: 20px; */
+    text-align: center;
+    font-weight: bold;
+  }
+  /* Commitment Message Styling */
+  .commitment-message {
+    font-size: 1.3rem;
+    color: #201c51;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  /* Header for the Trivia Section */
+  .trivia-score {
+    font-size: rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    color: #201c51;
+    margin-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    text-align: center; /*Ensure it's centered */
+  }
+
+  /* Trivia Score Section */
+  .trivia-score {
+    display: flex; /* Flex layout for side-by-side display */
+    justify-content: space-between; /* Spread content to the edges */
+    align-items: center; /* Center items vertically */
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    background-color: #efefef;
+    border-radius:5px;
+    font-family: 'Poppins', sans-serif; /* Custom Google font */
+    color: #201c51;
+    font-weight: bold;
+  }
+  
+  /* Container for the question box */
+  .trivia-question {
+    background-color: #ef558b;
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    border: 2px solid #ccc;
+    border-radius: var(--my-border-size);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  /* Options Grid */
+  .trivia-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Each Option Button */
+  .trivia-options button {
+    background-color: #201c51;
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    color: white;
+    border: none;
+    border-radius: var(--my-border-size);
+    padding: 15px 20px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+  
+  /* Hover Effect for Option Buttons */
+  .trivia-options button:hover {
+    background-color: #484193;
+  }
+  
+  /* Result Box */
+  .result-box {
+    background-color: #ef558b;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    border-radius: var(--my-border-size);
+    padding: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Result Message Styling */
+  .result-message {
+    /* margin-top: 10px; */
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    color: var(--my-dark-purple);
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif; /* Match the font style */
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  /* Score Box Styling (Blue Box) */
+  .score-box {
+    background-color: #201c51;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    border-radius: var(--my-border-size);
+    padding: 15px;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }

@@ -4,12 +4,15 @@ import ControlBox from './components/Controlbox'; // ControlBox import
 import ExhibitImage from './components/ExhibitImage'; // ExhibitImage with exhibit name overlay
 import ChatBot from "./components/ChatBot"; // ChatBot component
 import ChatButton from "./components/ChatButton"; // Floating chat button
+import Trivia from "./components/Trivia"; // Import the Trivia component
 import './App.css';
 
 const App = () => {
   const [level, setLevel] = useState('Beginner');
   const [language, setLanguage] = useState('en-US');
   const [isChatOpen, setIsChatOpen] = useState(false); // State to manage chatbot visibility
+  const [showTrivia, setShowTrivia] = useState(false); // State for Trivia
+
 
   const handleLevelChange = (level) => {
     setLevel(level);
@@ -19,7 +22,7 @@ const App = () => {
     const text = document.getElementById(paragraphId).textContent;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language;
-    speechSynthesis.speak(utterance); // Read the selected text aloud
+    speechSynthesis.speak(utterance); // Read the selected text aloud 
   };
 
   const handleLanguageChange = (lang) => {
@@ -60,6 +63,9 @@ const App = () => {
 
       {/* Floating Chat Button */}
       {!isChatOpen && <ChatButton onClick={toggleChat} />}
+
+      {/* Trivia Section - Added Trivia here */}
+      <Trivia /> {/* Trivia component rendered directly */}
     </div>
   );
 };

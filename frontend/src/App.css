@@ -59,4 +59,32 @@ p {
   h2 {
     font-size: 1.2rem;
   }
+  /* .trivia {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .trivia .question {
+    font-size: 1.2em;
+  }
+  
+  .trivia .options button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .trivia .result {
+    margin-top: 20px;
+    font-size: 1.2em;
+  }
+  
+  .trivia .result button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+   */
 }
