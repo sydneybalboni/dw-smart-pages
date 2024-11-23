@@ -1,12 +1,9 @@
-// src/App.js
 import React, { useState } from 'react';
-import Header from './components/Header';  // Ensure Header is imported
-import ControlBox from './components/Controlbox';  // ControlBox import
-import Exhibit from './components/Exhibit';  // Exhibit import
-import ExhibitImage from './components/ExhibitImage'; // This path depends on your project structure
-import ChatBot from "./components/ChatBot";
-import ChatButton from "./components/ChatButton";
-
+import Header from './components/Header'; // Header with logo and account icon
+import ControlBox from './components/Controlbox'; // ControlBox import
+import ExhibitImage from './components/ExhibitImage'; // ExhibitImage with exhibit name overlay
+import ChatBot from "./components/ChatBot"; // ChatBot component
+import ChatButton from "./components/ChatButton"; // Floating chat button
 import './App.css';
 
 const App = () => {
@@ -22,7 +19,7 @@ const App = () => {
     const text = document.getElementById(paragraphId).textContent;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language;
-    speechSynthesis.speak(utterance);  // Read the selected text aloud
+    speechSynthesis.speak(utterance); // Read the selected text aloud
   };
 
   const handleLanguageChange = (lang) => {
@@ -36,27 +33,33 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* Ensure the Header is rendered properly */}
+      {/* Render Header */}
       <Header />
-      
+
       {/* Display the Exhibit Image */}
-      <ExhibitImage src="/assets/GreatLakes.jpg" alt="Exhibit Display" />
-      
-      {/* Render the Control Box */}
+      <ExhibitImage 
+        src="/assets/GreatLakes.jpg" 
+        alt="Exhibit Display" 
+        exhibitName="Great Lakes" 
+      />
+
+      {/* Render Control Box */}
       <ControlBox
         onChangeLevel={handleLevelChange}
         onTextToSpeech={handleTextToSpeech}
         onLanguageSelect={handleLanguageChange}
       />
 
-      {/* Render the Exhibit based on selected level */}
-      {/* <Exhibit level={level} /> */}
-
       {/* Conditionally render the ChatBot */}
-      {isChatOpen && <ChatBot onClose={toggleChat} />}
+      {isChatOpen && (
+        <ChatBot 
+          onClose={toggleChat} 
+          isFullScreen={window.innerWidth <= 768} // Detect mobile screen
+        />
+      )}
 
       {/* Floating Chat Button */}
-      <ChatButton onClick={toggleChat} />
+      {!isChatOpen && <ChatButton onClick={toggleChat} />}
     </div>
   );
 };
