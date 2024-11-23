@@ -1,91 +1,151 @@
-/* src/components/Exhibit.css */
-
 /* General layout for Exhibit */
 .exhibit {
   display: flex;
   flex-direction: column;
-  align-items: center;  /* Center all items horizontally */
-  justify-content: center;  /* Center all items vertically */
-  background-color: #fff;
-  padding: 15px; /* Reduced padding */
-  border-radius: 8px;
-  width: 90%;  /* Allow Exhibit to take up 90% of the screen width */
-  max-width: 600px;  /* Set max width for mobile/tablet devices */
-  margin: 0px auto;  /* Center Exhibit on the page */
+  align-items: center; /* Center all items horizontally */
+  justify-content: center; /* Center all items vertically */
+  background-color: #ffffff; /* White background for clarity */
+  padding: 15px;
+  border-radius: 12px;
+  width: 90%; /* Allow Exhibit to take up 90% of the screen width */
+  max-width: 600px; /* Limit max width for mobile/tablet devices */
+  margin: 0 auto; /* Center Exhibit on the page */
 }
 
-/* Title (aligned to the top-left) */
-h2 {
+/* Header Row: Align heading and play button horizontally */
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Space between heading and play button */
+  width: 100%; /* Ensure it spans the full width */
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* Title (aligned to the left) */
+.header-row h2 {
   font-size: 1.2rem;
-  margin-bottom: 8px;  /* Reduced margin */
-  align-self: flex-start;  /* Align title to the top-left */
-  color: #333;
+  margin: 0;
+  color: #201c51;
+}
+
+/* Play Button Styling */
+.play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff; /* White background */
+  border: 2px solid #201c51; /* Border matching the theme */
+  color: #201c51; /* Icon color */
+  border-radius: 50%; /* Make it circular */
+  width: 40px; /* Fixed size for consistency */
+  height: 40px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: relative; /* To ensure the svg is centered */
+}
+
+.play-button:hover {
+  background-color: #201c51; /* Change background on hover */
+  color: #ffffff; /* Change icon color on hover */
+  transform: scale(1.1); /* Slightly enlarge the button */
+}
+
+/* Center the play triangle icon */
+.play-button svg {
+  font-size: 1.2rem; /* Adjust icon size for better visibility */
+  position: absolute;
+  top: 50%; /* Align vertically to the center */
+  left: 50%; /* Align horizontally to the center */
+  transform: translate(-50%, -50%); /* Adjust for proper centering */
+}
+
+/* Title Styling */
+h2 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #201c51; /* Dark color for contrast */
 }
 
 /* Section styling */
 .section {
-  margin-bottom: 10px;  /* Reduced margin */
-  width: 100%;
+  width: 100%; /* Ensure sections take full width */
+  margin-bottom: 15px; /* Add spacing between sections */
 }
 
 /* Paragraph Box Styling */
 .paragraph-box {
-  padding: 12px;
-  margin: 0px 10px 0px 0px;
-  background-color: white;
-  border: 2px solid #e5e7eb;  /* Light soft border */
+  padding: 15px;
+  background-color: #ffffff; /* White background */
+  border: 2px solid #F6A5C0; /* Light pink border */
   border-radius: 12px;
-  border-color: #F6A5C0;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-  width: 100%;
-  max-width: 90%;
-  color: #201c51;
+  width: 100%; /* Full width of the container */
+  max-width: 90%; /* Limit width for better alignment */
+  color: #201c51; /* Dark text color */
   font-size: 1rem;
-  /* Change text alignment to left */
-  text-align: left;
-  box-shadow: none; /* Remove shadow if needed */
+  line-height: 1.5; /* Improve readability */
+  text-align: left; /* Align text to the left */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  cursor: pointer; /* Indicate interactivity */
 }
 
-/* Highlighting animation when selected */
+/* Highlight animation when selected */
 .animate-paragraph {
-  background-color: #fcd34d;  /* Highlight with yellow */
-  transform: scale(1.05);  /* Add a slight zoom effect */
+  background-color: #fcd34d; /* Highlight with yellow */
+  transform: scale(1.05); /* Slight zoom effect */
 }
 
-/* Responsive styling for smaller screens */
+/* Responsive Styling */
+
+/* Medium Screens (Tablets) */
 @media (max-width: 768px) {
   .exhibit {
     padding: 12px;
-    width: 90%;  /* Take up 90% width on tablets */
-    max-width: 500px;  /* Set a smaller max width for mobile */
+    max-width: 500px; /* Smaller width for tablets */
   }
 
   .paragraph-box {
-    padding: 10px;  /* Reduce padding on smaller screens */
-    margin: 5px 0;  /* Reduce margin */
-    font-size: 0.9rem;  /* Adjust font size for smaller screens */
-    width: 100%;  /* Ensure paragraphs are full-width */
+    padding: 12px; /* Adjust padding */
+    margin: 8px 0; /* Add vertical spacing */
+    font-size: 0.95rem; /* Slightly smaller font */
   }
 
   h2 {
-    font-size: 1rem;  /* Reduce the font size of the title for mobile */
+    font-size: 1.2rem; /* Adjust heading size */
+  }
+
+  .play-button {
+    width: 35px;
+    height: 35px; /* Adjust size for smaller screens */
+  }
+
+  .play-button svg {
+    font-size: 1rem; /* Adjust icon size for smaller screens */
   }
 }
 
-/* Additional styling for very small devices like phones */
+/* Small Screens (Phones) */
 @media (max-width: 480px) {
   .exhibit {
     padding: 10px;
-    width: 90%;  /* Ensure the exhibit uses almost full width */
-    max-width: 400px;  /* Further reduce max width for mobile phones */
+    max-width: 400px; /* Further reduce width */
   }
 
   .paragraph-box {
-    font-size: 0.85rem;  /* Smaller font size for smaller screens */
+    padding: 10px; /* Reduced padding */
+    font-size: 0.85rem; /* Smaller font size */
   }
 
   h2 {
-    font-size: 0.9rem;  /* Slightly smaller title font */
+    font-size: 1rem; /* Adjust heading font size */
+  }
+
+  .play-button {
+    width: 30px;
+    height: 30px; /* Adjust size for smaller screens */
+  }
+
+  .play-button svg {
+    font-size: 0.9rem; /* Smaller icon for small screens */
   }
 }

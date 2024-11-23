@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Exhibit.css";
+import { FaPlay } from "react-icons/fa"; // Import a play icon
 
 const Exhibit = ({ level, language, handleTTSClick }) => {
   const [description, setDescription] = useState("Loading description...");
 
-  // Fetch the description on component mount or when level/language changes
+  // Fetch the description whenever the level or language changes
   useEffect(() => {
     const fetchDescription = async () => {
       try {
@@ -13,9 +14,8 @@ const Exhibit = ({ level, language, handleTTSClick }) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ level, language, exhibit: "default_exhibit" }), // Pass exhibit name
+          body: JSON.stringify({ level, language, exhibit: "default_exhibit" }),
         });
-
         if (!response.ok) {
           throw new Error("Failed to fetch description");
         }
@@ -29,16 +29,53 @@ const Exhibit = ({ level, language, handleTTSClick }) => {
     };
 
     fetchDescription();
-  }, [level, language]); // Fetches description on level or language change
+  }, [level, language]);
 
   return (
     <div className="exhibit">
+      {/* Prasent Section */}
       <div className="section prasent">
-        <h2>Prasent</h2>
+        <div className="header-row">
+          <h2>Prasent</h2>
+          {/* Play button aligned with the paragraph box */}
+          <div
+            className="play-button"
+            onClick={() => handleTTSClick(description)} // Trigger TTS for Prasent
+            role="button"
+            aria-label="Play Prasent Description"
+          >
+            <FaPlay className="play-icon" />
+          </div>
+        </div>
+        {/* Paragraph box */}
         <div
           id="prasent"
           className="paragraph-box"
-          onClick={() => handleTTSClick(description)} // Trigger TTS when clicked
+          onClick={() => handleTTSClick(description)} // Trigger TTS when clicking the box
+        >
+          {description}
+        </div>
+      </div>
+
+      {/* Ipsum Section */}
+      <div className="section ipsum">
+        <div className="header-row">
+          <h2>Ipsum</h2>
+          {/* Play button aligned with the paragraph box */}
+          <div
+            className="play-button"
+            onClick={() => handleTTSClick(description)} // Trigger TTS for Ipsum
+            role="button"
+            aria-label="Play Ipsum Description"
+          >
+            <FaPlay className="play-icon" />
+          </div>
+        </div>
+        {/* Paragraph box */}
+        <div
+          id="ipsum"
+          className="paragraph-box"
+          onClick={() => handleTTSClick(description)} // Trigger TTS when clicking the box
         >
           {description}
         </div>

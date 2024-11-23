@@ -1,62 +1,66 @@
 import React, { useState } from "react";
-import Header from "./components/Header"; // Header with logo and account icon
-import ExhibitName from "./components/ExhibitName"; // New component for the exhibit name
-import ExhibitImage from "./components/ExhibitImage"; // ExhibitImage with exhibit name overlay
-import ControlBox from "./components/Controlbox"; // ControlBox import
-import ChatBot from "./components/ChatBot"; // ChatBot component
-import ChatButton from "./components/ChatButton"; // Floating chat button
+import Header from "./components/Header";
+import ExhibitName from "./components/ExhibitName";
+import ExhibitImage from "./components/ExhibitImage";
+import ControlBox from "./components/Controlbox";
+import Exhibit from "./components/Exhibit";
+import ChatBot from "./components/ChatBot";
+import ChatButton from "./components/ChatButton";
 import "./App.css";
 
 const App = () => {
   const [level, setLevel] = useState("Beginner");
   const [language, setLanguage] = useState("en-US");
-  const [isChatOpen, setIsChatOpen] = useState(false); // State to manage chatbot visibility
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const handleLevelChange = (level) => {
-    setLevel(level);
-  };
-
-  const handleTextToSpeech = (paragraphId) => {
-    const text = document.getElementById(paragraphId).textContent;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = language;
-    speechSynthesis.speak(utterance); // Read the selected text aloud
-  };
-
-  const handleLanguageChange = (lang) => {
-    setLanguage(lang);
+  // Handle TTS functionality
+  const handleTTSClick = (text) => {
+    if (!text) {
+      console.error("TTS Error: No text provided.");
+      return;
+    }
+    try {
+      speechSynthesis.cancel(); // Cancel any ongoing speech
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = language; // Set the current language
+      speechSynthesis.speak(utterance); // Trigger TTS
+    } catch (error) {
+      console.error("TTS Error:", error);
+    }
   };
 
   // Toggle ChatBot visibility
-  const toggleChat = () => {
-    setIsChatOpen(!isChatOpen);
-  };
+  const toggleChat = () => setIsChatOpen(!isChatOpen);
 
   return (
     <div className="App">
-      {/* Render Header */}
+      {/* Header */}
       <Header />
 
-      {/* Render Exhibit Name */}
+      {/* Exhibit Name */}
       <ExhibitName name="GREAT LAKES FUTURE" />
 
-      {/* Display the Exhibit Image */}
-      <ExhibitImage 
-        src="/assets/GreatLakes.jpg" 
-        alt="Exhibit Display" 
-      />
+      {/* Exhibit Image */}
+      <ExhibitImage src="/assets/GreatLakes.jpg" alt="Exhibit Display" />
 
-      {/* Render Control Box */}
+      {/* Control Box */}
       <ControlBox
-        onChangeLevel={handleLevelChange}
-        onTextToSpeech={handleTextToSpeech}
-        onLanguageSelect={handleLanguageChange}
+        onChangeLevel={(newLevel) => setLevel(newLevel)}
+        onLanguageSelect={(newLanguage) => setLanguage(newLanguage)}
+        language={language}
+        level={level}
+        handleTTSClick={handleTTSClick}
       />
 
-      {/* Conditionally render the ChatBot */}
-      {isChatOpen && <ChatBot onClose={toggleChat} />}
+      {/* Exhibit
+      <Exhibit
+        level={level}
+        language={language}
+        handleTTSClick={handleTTSClick}
+      /> */}
 
-      {/* Floating Chat Button */}
+      {/* ChatBot */}
+      {isChatOpen && <ChatBot onClose={toggleChat} />}
       {!isChatOpen && <ChatButton onClick={toggleChat} />}
     </div>
   );
