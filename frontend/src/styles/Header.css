@@ -54,3 +54,54 @@
 
 /* Google Font import (add this to the HTML or body tag) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+/* User Profile Container */
+.user-profile {
+  position: absolute;  /* Position user icon in the top right */
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* User Icon Styling */
+.user-icon {
+  font-size: 2.5rem;  /* Make the icon large */
+  color: #201c51;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.user-icon:hover {
+  color: #f6a5c0; /* Change color on hover */
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+  position: absolute;
+  top: 40px;  /* Position dropdown below the icon */
+  right: 0;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dropdown-menu button {
+  background-color: transparent;
+  border: none;
+  color: #201c51;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-menu button:hover {
+  color: #f6a5c0;
+}
