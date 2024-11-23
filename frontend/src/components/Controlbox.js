@@ -5,7 +5,7 @@ import Exhibit from './Exhibit';
 const ControlBox = ({ onChangeLevel, onLanguageSelect, language }) => {
     const [level, setLevel] = useState('Beginner');
     const [selectedLang, setSelectedLang] = useState(language);
-    // const [voices, setVoices] = useState([]);
+    const [voices, setVoices] = useState([]);
     const [selectedVoice, setSelectedVoice] = useState(null);
   
     // Load available voices and set the default voice based on selected language
