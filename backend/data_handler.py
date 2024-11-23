@@ -1,6 +1,7 @@
 import pandas as pd
+from desc_generator import generate_descriptions
 
-def load_data(file_path):
+def load_data():
     """
     Load data from a CSV file and structure it into a dictionary of dictionaries.
     The exhibit name is the key to the first dictionary, and the internal dictionaries
@@ -23,5 +24,8 @@ def load_data(file_path):
             'spanish_intermediate': row.get('Spanish Intermediate', ''),
             'spanish_advanced': row.get('Spanish Advanced', '')
         }
+
+    # TODO: Generate missing descriptions for each exhibit
     
+
     return data_dict

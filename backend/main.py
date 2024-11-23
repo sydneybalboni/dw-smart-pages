@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
+from data_handler import load_data
 
 # Load environment variables from .env file
 load_dotenv()
 
 app = FastAPI()
+
+exhibit_data = load_data()
 
 # Enable CORS
 app.add_middleware(
