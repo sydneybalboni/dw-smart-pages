@@ -69,6 +69,21 @@
   color: #ef558b;
 }
 
+.badges-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 /* Google Font import (add this to the HTML or body tag) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
@@ -97,7 +112,7 @@
 /* Dropdown Menu Styling */
 .dropdown-menu {
   position: absolute;
-  top: 40px;  /* Position dropdown below the icon */
+  top: 45px;  /* Position dropdown below the icon */
   right: 0;
   background-color: white;
   border: 1px solid #e5e7eb;
