@@ -16,15 +16,12 @@
   width: 90%; /* ControlBox width is 90% of its container */
   max-width: 800px; /* Set max width for better control */
   margin: auto; /* Center ControlBox on the page */
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for modern feel */
-  border: 1px solid #e5e7eb; /* Light border */
   font-family: 'Poppins', sans-serif;  /* Apply the fun Poppins font */
 }
 
 /* Style for each individual control (dropdown, buttons, etc.) */
 .control {
-  margin-right: 20px;
-  margin-bottom: 15px; /* Add some margin at the bottom for wrapping */
+  margin-right: 20px; /* Add some margin at the bottom for wrapping */
   flex: 1;
   min-width: 150px; /* Ensure each control has a minimum width */
   display: flex;

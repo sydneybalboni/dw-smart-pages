@@ -7,44 +7,44 @@
   align-items: center;  /* Center all items horizontally */
   justify-content: center;  /* Center all items vertically */
   background-color: #fff;
-  padding: 20px;
+  padding: 15px; /* Reduced padding */
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 90%;  /* Allow Exhibit to take up 90% of the screen width */
   max-width: 600px;  /* Set max width for mobile/tablet devices */
-  margin: 0 auto;  /* Center Exhibit on the page */
+  margin: 0px auto;  /* Center Exhibit on the page */
 }
 
 /* Title (aligned to the top-left) */
 h2 {
   font-size: 1.2rem;
-  margin-bottom: 10px;
+  margin-bottom: 8px;  /* Reduced margin */
   align-self: flex-start;  /* Align title to the top-left */
   color: #333;
 }
 
 /* Section styling */
 .section {
-  margin-bottom: 30px;
+  margin-bottom: 10px;  /* Reduced margin */
   width: 100%;
 }
 
 /* Paragraph Box Styling */
 .paragraph-box {
-  padding: 15px;
-  margin: 10px 0;
+  padding: 12px;
+  margin: 0px 10px 0px 0px;
   background-color: white;
   border: 2px solid #e5e7eb;  /* Light soft border */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
   border-color: #F6A5C0;
   transition: transform 0.3s ease;
   cursor: pointer;
-  width: 100%; /* Allow paragraphs to fill the container width */
-  max-width: 100%; /* Max width for paragraph box */
+  width: 100%;
+  max-width: 90%;
   color: #201c51;
   font-size: 1rem;
-  text-align: center;
+  /* Change text alignment to left */
+  text-align: left;
+  box-shadow: none; /* Remove shadow if needed */
 }
 
 /* Highlighting animation when selected */
@@ -56,14 +56,14 @@ h2 {
 /* Responsive styling for smaller screens */
 @media (max-width: 768px) {
   .exhibit {
-    padding: 15px;
+    padding: 12px;
     width: 90%;  /* Take up 90% width on tablets */
     max-width: 500px;  /* Set a smaller max width for mobile */
   }
 
   .paragraph-box {
-    padding: 12px;
-    margin: 10px 0;
+    padding: 10px;  /* Reduce padding on smaller screens */
+    margin: 5px 0;  /* Reduce margin */
     font-size: 0.9rem;  /* Adjust font size for smaller screens */
     width: 100%;  /* Ensure paragraphs are full-width */
   }

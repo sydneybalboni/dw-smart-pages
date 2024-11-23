@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center; /* Center the image horizontally */
     margin-bottom: 20px; /* Add space below the image */
+    margin-top: 20px;
   }
   
   .exhibit-image {
