@@ -2,6 +2,7 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from data_handler import load_data
 from chatbot import generate_response
+from pydantic import BaseModel
 import json
 
 # Initialize FastAPI app
@@ -18,8 +19,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+class Settings(BaseModel):
+    level: str
+    language: str
 
-settings = {"level": "beginner", "language": "english"}
+settings = Settings(level="beginner", language="english")
 
 # Base route
 @app.get("/")
@@ -32,12 +36,14 @@ def get_history():
     # Replace with logic to fetch conversation history
     return {"history": []}
 
+# Settings route
 @app.post("/settings")
-async def update_settings(new_settings):
+async def update_settings(new_settings: Settings):
     global settings
-    settings.level = new_settings.level
-    settings.language = new_settings.language
-    return {"message": "Settings updated successfully"}
+    print(f"Updating settings to: {new_settings}")
+    settings = new_settings
+    return {"message": "Settings updated successfully", "settings": settings.dict()}
+
 
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):

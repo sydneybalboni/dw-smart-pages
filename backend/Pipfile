@@ -9,6 +9,7 @@ openai = "*"
 python-dotenv = "*"
 pandas = "*"
 uvicorn = {extras = ["standard"], version = "*"}
+pydantic = "*"
 
 [dev-packages]
 
