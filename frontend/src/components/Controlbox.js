@@ -27,9 +27,10 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect, language }) => {
     }
   }, [selectedLang]);
 
-  // Send settings to backend
   const sendSettingsToBackend = async (level, language) => {
     try {
+      console.log("Payload sent to backend:", { level, language }); // Debugging
+  
       const response = await fetch("http://127.0.0.1:8000/settings", {
         method: "POST",
         headers: {
@@ -37,13 +38,13 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect, language }) => {
         },
         body: JSON.stringify({ level, language }),
       });
-
+  
       if (!response.ok) {
-        throw new Error("Failed to send settings to the backend");
+        throw new Error(`Failed to send settings: ${response.statusText}`);
       }
-
+  
       const data = await response.json();
-      console.log("Backend response:", data); // Debugging purposes
+      console.log("Backend response:", data); // Debugging
     } catch (error) {
       console.error("Error sending settings to backend:", error);
     }
