@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 import "../styles/Header.css";
@@ -30,6 +30,13 @@ const Header = () => {
   // }, []);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToPage = (path) => {
+    if (location.pathname !== path) {
+      navigate(path);
+    }
+  };
 
   return (
     <header className="header">
@@ -38,7 +45,7 @@ const Header = () => {
           src={discoveryWorldLogo}
           alt="Discovery World Logo"
           className="logo"
-          onClick={() => navigate("/")}
+          onClick={() => goToPage("/")}
         />
       </div>
 
@@ -50,7 +57,7 @@ const Header = () => {
         />
         {isDropdownVisible && (
           <div className="dropdown-menu">
-          <button onClick={() => navigate("/account")}>Account</button>
+          <button onClick={() => goToPage("/account")}>Account</button>
           <button onClick={() => alert('Go to Badge Page')}>Badge</button>
           <button onClick={() => alert('Sign Out')}>Sign Out</button>
         </div>
