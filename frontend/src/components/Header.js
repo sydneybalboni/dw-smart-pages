@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+
+
 import "../styles/Header.css";
 import discoveryWorldLogo from "../assets/Discovery-World.svg";
 import { FaUserCircle } from "react-icons/fa";
@@ -26,6 +29,15 @@ const Header = () => {
   //   };
   // }, []);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToPage = (path) => {
+    if (location.pathname !== path) {
+      navigate(path);
+    }
+  };
+
   return (
     <header className="header">
       <div className="logo-container">
@@ -33,6 +45,7 @@ const Header = () => {
           src={discoveryWorldLogo}
           alt="Discovery World Logo"
           className="logo"
+          onClick={() => goToPage("/")}
         />
       </div>
 
@@ -44,7 +57,7 @@ const Header = () => {
         />
         {isDropdownVisible && (
           <div className="dropdown-menu">
-          <button onClick={() => alert('View Account Info')}>Account</button>
+          <button onClick={() => goToPage("/account")}>Account</button>
           <button onClick={() => alert('Go to Badge Page')}>Badge</button>
           <button onClick={() => alert('Sign Out')}>Sign Out</button>
         </div>

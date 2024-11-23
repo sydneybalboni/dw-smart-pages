@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AccountPage from "./components/AccountPage";
 import Header from "./components/Header";
 import ExhibitName from "./components/ExhibitName";
 import ExhibitImage from "./components/ExhibitImage";
@@ -8,7 +10,7 @@ import ChatBot from "./components/ChatBot";
 import ChatButton from "./components/ChatButton";
 import "./App.css";
 
-const App = () => {
+const MainPage = () => {
   const [level, setLevel] = useState("Beginner");
   const [language, setLanguage] = useState("en-US");
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -63,6 +65,17 @@ const App = () => {
       {isChatOpen && <ChatBot onClose={toggleChat} />}
       {!isChatOpen && <ChatButton onClick={toggleChat} />}
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/account" element={<AccountPage />} />
+      </Routes>
+    </Router>
   );
 };
 
