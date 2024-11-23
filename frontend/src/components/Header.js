@@ -73,10 +73,10 @@ const Header = () => {
         />
         {openDropdown === "account" && (
           <div className="dropdown-menu">
-            <button onClick={() => goToPage("/account")}>Account</button>
-            <button onClick={() => alert("Go to Badge Page")}>Badge</button>
-            <button onClick={() => alert("Sign Out")}>Sign Out</button>
-          </div>
+          <button onClick={() => goToPage("/account")}>Account</button>
+          <button onClick={() => alert('Go to Badge Page')}>Badge</button>
+          <button onClick={() => goToPage("/login")}>Sign In</button>
+        </div>
         )}
       </div>
     </header>
