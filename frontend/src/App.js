@@ -9,6 +9,7 @@ import Exhibit from "./components/Exhibit";
 import ChatBot from "./components/ChatBot";
 import ChatButton from "./components/ChatButton";
 import BadgesModal from './components/BadgesModal';
+import popup from './assets/badges/lakes.png';
 import "./App.css";
 
 const MainPage = () => {
@@ -76,7 +77,7 @@ const MainPage = () => {
       onClose={() => setBadgesModalOpen(false)}>
         <h2>You have unlocked a new badge!</h2>
         <img 
-          src="/badges/GreatLakesBadge.png"
+          src= {popup}
           alt="Unlocked Great Lakes Badge"
           style={{ 
             width: "150px",
