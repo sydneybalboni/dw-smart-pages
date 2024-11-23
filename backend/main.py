@@ -23,7 +23,7 @@ class Settings(BaseModel):
     level: str
     language: str
 
-settings = Settings(level="beginner", language="english")
+settings = Settings(level="beginner", language="en-US")
 
 # Base route
 @app.get("/")
@@ -39,10 +39,16 @@ async def update_settings(new_settings: Settings):
     return {"message": "Settings updated successfully", "settings": settings.dict()}
 
 
-@app.get("/generate_description")
-async def generate_description(exhibit: str):
+class GenerateDescriptionRequest(BaseModel):
+    exhibit: str
+
+@app.post("/generate_description")
+async def generate_description(request: GenerateDescriptionRequest):
+    # Extract exhibit from the request body
+    exhibit = request.exhibit
+
     # Fetch the description based on global settings
-    description = exhibit_data.get(exhibit, {}).get(f"{settings.language}_{settings.level}", "Description not found")
+    description = exhibit_data["Great Lakes Future Exhibit"][f"{settings.language}_{settings.level}"]
     return {"description": description}
 
 
