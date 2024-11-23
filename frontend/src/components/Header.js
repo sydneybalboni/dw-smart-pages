@@ -21,7 +21,7 @@ const Header = () => {
           className="logo"
         />
       </div>
-      <h1 className="exhibit-name">EXHIBIT NAME</h1>
+      
 
       {/* User Icon and Dropdown */}
       <div className="user-profile">

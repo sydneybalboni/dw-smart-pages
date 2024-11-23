@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import Header from './components/Header'; // Header with logo and account icon
-import ControlBox from './components/Controlbox'; // ControlBox import
-import ExhibitImage from './components/ExhibitImage'; // ExhibitImage with exhibit name overlay
+import React, { useState } from "react";
+import Header from "./components/Header"; // Header with logo and account icon
+import ExhibitName from "./components/ExhibitName"; // New component for the exhibit name
+import ExhibitImage from "./components/ExhibitImage"; // ExhibitImage with exhibit name overlay
+import ControlBox from "./components/Controlbox"; // ControlBox import
 import ChatBot from "./components/ChatBot"; // ChatBot component
 import ChatButton from "./components/ChatButton"; // Floating chat button
-import './App.css';
+import "./App.css";
 
 const App = () => {
-  const [level, setLevel] = useState('Beginner');
-  const [language, setLanguage] = useState('en-US');
+  const [level, setLevel] = useState("Beginner");
+  const [language, setLanguage] = useState("en-US");
   const [isChatOpen, setIsChatOpen] = useState(false); // State to manage chatbot visibility
 
   const handleLevelChange = (level) => {
@@ -36,11 +37,13 @@ const App = () => {
       {/* Render Header */}
       <Header />
 
+      {/* Render Exhibit Name */}
+      <ExhibitName name="Exhibit Name" />
+
       {/* Display the Exhibit Image */}
       <ExhibitImage 
         src="/assets/GreatLakes.jpg" 
         alt="Exhibit Display" 
-        exhibitName="Great Lakes" 
       />
 
       {/* Render Control Box */}
@@ -51,12 +54,7 @@ const App = () => {
       />
 
       {/* Conditionally render the ChatBot */}
-      {isChatOpen && (
-        <ChatBot 
-          onClose={toggleChat} 
-          isFullScreen={window.innerWidth <= 768} // Detect mobile screen
-        />
-      )}
+      {isChatOpen && <ChatBot onClose={toggleChat} />}
 
       {/* Floating Chat Button */}
       {!isChatOpen && <ChatButton onClick={toggleChat} />}
