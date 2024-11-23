@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AccountPage from "./components/AccountPage";
 import Header from "./components/Header"; // Header with logo and account icon
 import ExhibitName from "./components/ExhibitName"; // New component for the exhibit name
 import ExhibitImage from "./components/ExhibitImage"; // ExhibitImage with exhibit name overlay
@@ -7,7 +9,7 @@ import ChatBot from "./components/ChatBot"; // ChatBot component
 import ChatButton from "./components/ChatButton"; // Floating chat button
 import "./App.css";
 
-const App = () => {
+const MainPage = () => {
   const [level, setLevel] = useState("Beginner");
   const [language, setLanguage] = useState("en-US");
   const [isChatOpen, setIsChatOpen] = useState(false); // State to manage chatbot visibility
@@ -59,6 +61,17 @@ const App = () => {
       {/* Floating Chat Button */}
       {!isChatOpen && <ChatButton onClick={toggleChat} />}
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/account" element={<AccountPage />} />
+      </Routes>
+    </Router>
   );
 };
 
