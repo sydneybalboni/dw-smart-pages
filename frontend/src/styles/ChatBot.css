@@ -3,50 +3,85 @@
     bottom: 90px;
     right: 20px;
     width: 350px;
-    height: 400px; /* Adjust the height to make the chat box smaller */
-    max-height: 80%; /* Ensure it doesn't extend beyond 80% of the viewport */
+    height: 400px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-  }
-  
-  .chat-messages {
-    flex: 1;
-    overflow-y: auto;
+    font-family: 'Poppins', sans-serif; /* Apply the font */
+}
+
+.chat-header {
+    background-color: #201C51;
+    color: white;
     padding: 10px;
-    background-color: #f9f9f9;
-    max-height: calc(100% - 50px); /* Ensures messages stay within the box */
-  }
-  
-  .chat-input {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif; /* Apply the font */
+    text-align: center; /* Center align the header text */
+}
+
+.chat-messages {
+    flex: 1; /* Take all available vertical space */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align messages to the bottom */
+    padding: 10px;
+    overflow-y: auto; /* Enable scrolling if messages exceed container height */
+    background-color: #f9f9f9; /* Background for the messages area */
+}
+
+.chat-message {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-family: 'Poppins', sans-serif; /* Apply the font */
+}
+
+.user-message {
+    align-self: flex-end; /* Align user messages to the right */
+    background-color: #daf8cb;
+    color: #333;
+}
+
+.bot-message {
+    align-self: flex-start; /* Align bot messages to the left */
+    background-color: #eaeaea;
+    color: #555;
+}
+
+.chat-input {
     display: flex;
     padding: 10px;
     border-top: 1px solid #ddd;
     background-color: white;
-  }
-  
-  .chat-input input {
+}
+
+.chat-input input {
     flex: 1;
     padding: 10px;
+    font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 20px;
     outline: none;
     margin-right: 10px;
-  }
-  
-  .chat-input button {
-    background-color: #007bff;
+    font-family: 'Poppins', sans-serif; /* Apply the font */
+}
+
+.chat-input button {
+    background-color: #201C51;
     border: none;
     color: white;
     padding: 10px 15px;
     border-radius: 20px;
     cursor: pointer;
-  }
-  
-  .chat-input button:hover {
-    background-color: #0056b3;
-  }
-  
+    font-family: 'Poppins', sans-serif; /* Apply the font */
+}
+
+.chat-input button:hover {
+    background-color: #282364;
+}

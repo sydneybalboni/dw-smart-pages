@@ -1,6 +1,9 @@
 
 /* src/App.css */
 
+/* At the top of ChatBot.css or App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 /* General App Styles */
 .App {
   display: flex;
