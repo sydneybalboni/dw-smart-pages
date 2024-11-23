@@ -39,6 +39,13 @@ async def update_settings(new_settings: Settings):
     return {"message": "Settings updated successfully", "settings": settings.dict()}
 
 
+@app.get("/generate_description")
+async def generate_description(exhibit: str):
+    # Fetch the description based on global settings
+    description = exhibit_data.get(exhibit, {}).get(f"{settings.language}_{settings.level}", "Description not found")
+    return {"description": description}
+
+
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()

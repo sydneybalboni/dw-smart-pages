@@ -19,9 +19,9 @@ const Exhibit = ({ level, language, handleTTSClick }) => {
         if (!response.ok) {
           throw new Error("Failed to fetch description");
         }
-
+    
         const data = await response.json();
-        setDescription(data.description);
+        setDescription(data.description); // Set the description string from the backend
       } catch (error) {
         console.error("Error fetching description:", error);
         setDescription("Unable to load description. Please try again later.");

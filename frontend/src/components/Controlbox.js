@@ -3,7 +3,7 @@ import "../styles/ControlBox.css";
 import Exhibit from "./Exhibit";
 
 const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
-  const [level, setLevel] = useState("Beginner");
+  const [level, setLevel] = useState("beginner");
   const [selectedLang, setSelectedLang] = useState("en-US");
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
@@ -81,9 +81,9 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
       <div className="control">
         <label>Reading Level</label>
         <select value={level} onChange={handleAgeLevelChange}>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
         </select>
       </div>
 

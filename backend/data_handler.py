@@ -25,7 +25,4 @@ def load_data():
             'es-MX_advanced': row.get('es-MX_advanced', '')
         }
 
-    # TODO: Generate missing descriptions for each exhibit
-    
-
     return data_dict
