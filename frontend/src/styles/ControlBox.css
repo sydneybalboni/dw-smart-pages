@@ -1,5 +1,8 @@
 /* src/components/ControlBox.css */
 
+/* Importing Google font (same as Exhibit Name) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap');
+
 /* ControlBox container */
 .control-box {
   background-color: white;
@@ -12,9 +15,10 @@
   align-items: center;
   width: 90%; /* ControlBox width is 90% of its container */
   max-width: 800px; /* Set max width for better control */
-  margin: 0 auto; /* Center ControlBox on the page */
+  margin: auto; /* Center ControlBox on the page */
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for modern feel */
   border: 1px solid #e5e7eb; /* Light border */
+  font-family: 'Poppins', sans-serif;  /* Apply the fun Poppins font */
 }
 
 /* Style for each individual control (dropdown, buttons, etc.) */
@@ -31,18 +35,19 @@
 .control select {
   padding: 12px 15px;
   margin-top: 8px;
-  background-color: pink;  /* Soft background for a modern look */
+  background-color: #A3C9D1;  /* Soft background for a modern look */
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   font-size: 1rem;
+  font-family: 'Poppins', sans-serif;  /* Ensure dropdown uses the same font */
 }
 
 /* Hover effect for the select dropdown */
 .control select:hover {
-  background-color: darkmagenta;
+  background-color: #b4dbe3;
 }
 
 /* Button styling (modern, fun design) */
@@ -57,6 +62,17 @@
   transition: all 0.3s ease-in-out;
   width: 100%;
   margin-top: 10px;
+  font-family: 'Poppins', sans-serif;  /* Apply the fun font to buttons */
+}
+/* Style for each individual text box */
+.section {
+  width: 100%; /* Make sure the section spans full width */
+  max-width: 650px; /* Set max width to prevent overflow */
+  margin: 20px auto; /* Center the box horizontally and add space from other elements */
+  background-color: var(--very-light-pink); /* Light pink background */
+  border: 2px solid var(--pink); /* Pink border around text boxes */
+  border-radius: 10px;
+  box-sizing: border-box; /* Ensure padding and border don't affect width calculation */
 }
 
 /* Button hover effects */
@@ -69,10 +85,11 @@
 /* Style for the ControlBox label */
 .control label {
   font-size: 1rem;
-  color: #333;
+  color: #201c51;
   margin-bottom: 5px;
   font-weight: bold;
   text-align: left;
+  font-family: 'Poppins', sans-serif;  /* Apply font to labels */
 }
 
 /* Responsive Design - Mobile/Tablet */

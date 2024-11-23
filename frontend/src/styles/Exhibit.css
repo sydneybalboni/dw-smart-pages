@@ -33,7 +33,7 @@ h2 {
 .paragraph-box {
   padding: 15px;
   margin: 10px 0;
-  background-color: #201c51;
+  background-color: white;
   border: 2px solid #e5e7eb;  /* Light soft border */
   border-radius: 12px; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -42,7 +42,7 @@ h2 {
   cursor: pointer;
   width: 100%; /* Allow paragraphs to fill the container width */
   max-width: 100%; /* Max width for paragraph box */
-  color: white;
+  color: #201c51;
   font-size: 1rem;
   text-align: center;
 }
