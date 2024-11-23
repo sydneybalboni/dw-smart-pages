@@ -49,7 +49,7 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect, language }) => {
     return (
       <div className="control-box">
         <div className="control">
-          <label>Age Level</label>
+          <label>Reading Level</label>
           <select value={level} onChange={handleAgeLevelChange}>
             <option value="Beginner">Beginner</option>
             <option value="Intermediate">Intermediate</option>

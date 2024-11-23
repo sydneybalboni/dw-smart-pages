@@ -1,6 +1,9 @@
 
 /* src/App.css */
 
+/* At the top of ChatBot.css or App.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
 /* General App Styles */
 .App {
   display: flex;
@@ -10,13 +13,11 @@
   min-height: 100vh;
 }
 
-
 /* Content Styling - Ensure the content is spaced below the header */
 .exhibit {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 1200px;  /* Limit the width of the content on larger screens */
   margin-top: 20px;  /* Ensure there’s space below the header */

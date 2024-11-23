@@ -6,13 +6,11 @@
   justify-content: center;  /* Center content horizontally */
   align-items: center;
   background-color: #ffffff; /* White background */
-  padding: 20px;
   color: #201c51;  /* Dark color for text */
   font-size: 2rem;
   width: 100%;
   position: sticky;
   top: 0;
-  z-index: 100;
   margin: 0;  /* Remove margin */
   position: relative; /* Allow absolute positioning of the logo */
 }
@@ -38,17 +36,16 @@
 
 /* Logo styling */
 .logo {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
 }
 
 /* Exhibit Name Styling */
 .exhibit-name {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   font-family: 'Poppins', sans-serif;  /* Custom Google font */
   color: #201c51;  /* Dark color for visibility */
-  margin: 0;
   text-align: center; /* Ensure it's centered */
 }
 
