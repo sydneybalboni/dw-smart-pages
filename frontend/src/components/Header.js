@@ -1,40 +1,53 @@
-// src/components/Header.js
-import React, { useState } from 'react';
-import '../styles/Header.css';
-import discoveryWorldLogo from '../assets/Discovery-World.svg';
-import { FaUserCircle } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from "react";
+import "../styles/Header.css";
+import discoveryWorldLogo from "../assets/Discovery-World.svg";
+import { FaUserCircle } from "react-icons/fa";
 
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const dropdownRef = useRef(null);
 
-  // Function to toggle the dropdown
+  // Toggle the dropdown menu
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
   };
+
+  // Close the dropdown when clicking outside
+  // const handleClickOutside = (event) => {
+  //   if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+  //     setIsDropdownVisible(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
   return (
     <header className="header">
       <div className="logo-container">
         <img
-          src={discoveryWorldLogo}  // Correct path for assets in public folder
-          alt="Exhibit Logo"
+          src={discoveryWorldLogo}
+          alt="Discovery World Logo"
           className="logo"
         />
       </div>
-      
 
-      {/* User Icon and Dropdown */}
-      <div className="user-profile">
+      <div className="user-profile" ref={dropdownRef}>
         <FaUserCircle
           className="user-icon"
-          onClick={toggleDropdown} // Toggle dropdown when clicked
+          onClick={toggleDropdown}
+          // aria-expanded={isDropdownVisible} // Accessibility support
         />
         {isDropdownVisible && (
           <div className="dropdown-menu">
-            <button onClick={() => alert('View Account Info')}>Account</button>
-            <button onClick={() => alert('Go to Badge Page')}>Badges</button>
-            <button onClick={() => alert('Sign Out')}>Sign Out</button>
-          </div>
+          <button onClick={() => alert('View Account Info')}>Account</button>
+          <button onClick={() => alert('Go to Badge Page')}>Badge</button>
+          <button onClick={() => alert('Sign Out')}>Sign Out</button>
+        </div>
         )}
       </div>
     </header>
