@@ -25,3 +25,25 @@ def generate_description(prompt):
         ]
     )
     return completion.choices[0].message['content']
+
+
+def generate_descriptions(exhitbit):
+    """
+    Generate a list of prompts for different reading levels and languages
+    based on the given exhibit.
+    """
+    # Check if exhitbit is NaN
+    if exhitbit != exhitbit:
+        return "No description available."
+    
+
+    reading_levels = ['beginner', 'intermediate', 'advanced']
+    languages = ['english', 'spanish']
+
+    prompts = []
+    for level in reading_levels:
+        for language in languages:
+            # TODO: Make prompt better
+            prompt = f"Reading level: {level}\nLanguage: {language}\nExhibit: {exhitbit}"
+            prompts.append(prompt)
+
