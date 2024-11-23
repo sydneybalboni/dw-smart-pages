@@ -1,40 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ChatHeader from "./ChatHeader";
 import ChatMessage from "./ChatMessage";
 import "../styles/ChatBot.css";
 
 const ChatBot = ({ onClose }) => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState([]); // Stores chat history
+  const [input, setInput] = useState(""); // Stores user input
+  const socketRef = useRef(null); // Reference for WebSocket connection
 
-  const handleSend = async () => {
+  // Establish WebSocket connection
+  useEffect(() => {
+    // Connect to FastAPI WebSocket endpoint
+    socketRef.current = new WebSocket("ws://localhost:8000/ws/chat");
+
+    // Handle incoming messages from the server
+    socketRef.current.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      const botMessage = { sender: "bot", text: data.response };
+      setMessages((prev) => [...prev, botMessage]);
+    };
+
+    // Handle connection close
+    socketRef.current.onclose = () => {
+      console.error("WebSocket connection closed");
+    };
+
+    // Cleanup on component unmount
+    return () => {
+      socketRef.current.close();
+    };
+  }, []);
+
+  // Send message to the server
+  const handleSend = () => {
     if (!input.trim()) return;
 
+    // Add user message to the UI
     const userMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
 
-    setInput("");
-
-    try {
-      // Send user message to FastAPI backend
-      const response = await fetch("http://localhost:8000/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: input }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch from the backend");
-      }
-
-      const data = await response.json();
-      const botMessage = { sender: "bot", text: data.response };
-      setMessages((prev) => [...prev, botMessage]);
-    } catch (error) {
-      console.error("Error connecting to backend:", error);
-      const errorMessage = { sender: "bot", text: "Something went wrong. Please try again later." };
-      setMessages((prev) => [...prev, errorMessage]);
+    // Send message through WebSocket
+    if (socketRef.current.readyState === WebSocket.OPEN) {
+      socketRef.current.send(
+        JSON.stringify({ message: input }) // Send user input to the backend
+      );
     }
+
+    // Clear input
+    setInput("");
   };
 
   return (
