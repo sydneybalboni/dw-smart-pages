@@ -73,13 +73,33 @@ const MainPage = () => {
 
       {/* Badges Modal Component */}
       <BadgesModal isOpen={isBadgesModalOpen} 
-      onClose={() => {
-        console.log("Closing Modal");
-        setBadgesModalOpen(false)
-      }}>
+      onClose={() => setBadgesModalOpen(false)}>
         <h2>You have unlocked a new badge!</h2>
-        <p>insert badge here.</p>
-        <button onClick={() => setBadgesModalOpen(false)}>Close</button>
+        <img 
+          src="/badges/GreatLakesBadge.png"
+          alt="Unlocked Great Lakes Badge"
+          style={{ 
+            width: "150px",
+            height: "150px",
+            display: "bock",
+            margin: "0 auto 20px auto"
+          }}
+        />
+        <button 
+        onClick={() => setBadgesModalOpen(false)}
+          style={{
+            fontSize: "1.5rem",   // Make the font size larger
+            padding: "10px 20px", // Increase the padding for a bigger button
+            cursor: "pointer",    // Change cursor to pointer
+            backgroundColor: "#201c51", // Button background color (optional)
+            color: "white",       // Button text color (optional)
+            border: "none",       // Remove default border
+            borderRadius: "5px",  // Rounded corners
+            marginTop: "20px"     // Add space between the image and button
+          }}
+        >
+          Close  
+        </button>
       </BadgesModal>
     </div>
   );
