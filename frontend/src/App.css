@@ -10,19 +10,6 @@
   padding-top: 100px;  /* Ensure full page height */
 }
 
-/* Header Styling */
-.header {
-  background-color: #f5a5bb;  /* Adjusted color for better visibility */
-  padding: 20px;
-  color: white;
-  text-align: center;
-  font-size: 2rem;
-  width: 100%;
-  margin-bottom: 20px; /* Spacing below the header */
-  position: sticky;
-  top: 0;  /* Make sure the header stays at the top of the page */
-  z-index: 10;
-}
 
 /* Content Styling - Ensure the content is spaced below the header */
 .exhibit {

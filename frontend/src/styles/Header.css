@@ -1,93 +1,49 @@
 /* src/components/Header.css */
 
-/* Mobile-First Styles */
+/* Header Box Styling */
 .header {
-    display: flex;
-    flex-direction: column;  /* Stack logo and controls vertically on small screens */
-    justify-content: center;
-    align-items: center;
-    background-color: blue;
-    padding: 10px;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: 10;  /* Ensure it stays above other content */
-  }
-  
-  .logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .logo {
-    width: 40px; /* Smaller logo on mobile */
-    height: 40px;
-  }
-  
-  .exhibit-name {
-    font-size: 1.5rem;
-    color: #201c51;
-    text-align: center;
-    margin: 10px 0;
-  }
-  
-  .controls {
-    display: flex;
-    flex-direction: column;  /* Stack controls vertically */
-    gap: 15px;
-    margin-top: 15px;
-  }
-  
-  .control {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-    color: #201c51;
-  }
-  
-  /* Media Query for Tablets */
-  @media (min-width: 480px) and (max-width: 768px) {
-    .header {
-      flex-direction: row; /* Align items horizontally on tablets */
-      justify-content: space-between;
-      padding: 15px;
-    }
-  
-    .logo {
-      width: 50px;  /* Slightly larger logo on tablets */
-      height: 50px;
-    }
-  
-    .controls {
-      flex-direction: row;
-      gap: 20px;
-    }
-  }
-  
-  /* Media Query for Larger Screens (Desktop) */
-  @media (min-width: 1024px) {
-    .header {
-      flex-direction: row; /* Align items horizontally on larger screens */
-      justify-content: space-between;
-      padding: 20px;
-    }
-  
-    .logo {
-      width: 60px;  /* Larger logo on desktops */
-      height: 60px;
-    }
-  
-    .exhibit-name {
-      font-size: 2rem;
-    }
-  
-    .controls {
-      flex-direction: row;
-      gap: 25px;
-    }
-  }
-  
+  display: flex;
+  justify-content: space-between; /* Logo on the right and Exhibit Name in the middle */
+  align-items: center;
+  background-color: #ffffff; /* White background */
+  padding: 20px 20px 20px 20px;
+  color: #201c51;  /* Dark color for text */
+  font-size: 2rem;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  margin: 0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #e5e7eb;  /* Light bottom border for separation */
+}
+
+/* Logo container */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: 20px; /* Left margin for spacing */
+  margin-right: 20px; /* Right margin for spacing */
+}
+
+/* Logo styling */
+.logo {
+  width: 70px;  /* Logo size */
+  height: 70px;
+  margin-left: auto; /* Align logo to the right */
+}
+
+/* Exhibit Name Styling */
+.exhibit-name {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif; /* Custom Google font */
+  text-align: center;
+  color: #201c51;  /* Dark color for better visibility */
+  flex-grow: 1; /* Ensure the Exhibit Name takes up available space */
+  margin: 0;
+  padding-left: 20px; /* Padding on the left */
+}
+
+/* Google Font import (add this to the HTML or body tag) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');

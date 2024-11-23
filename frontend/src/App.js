@@ -1,16 +1,15 @@
 // src/App.js
 import React, { useState } from 'react';
-import ControlBox from './components/Controlbox';
-import Exhibit from './components/Exhibit';
-import Header from './components/Header'; // Make sure Header is imported
+import Header from './components/Header';  // Ensure Header is imported
+import ControlBox from './components/Controlbox';  // ControlBox import
+import Exhibit from './components/Exhibit';  // Exhibit import
 import './App.css';
 
 const App = () => {
   const [level, setLevel] = useState('Beginner');
   const [language, setLanguage] = useState('en-US');
-
   const handleLevelChange = (level) => {
-    setLevel(level);  // Update the level based on the slider or user selection
+    setLevel(level);
   };
 
   const handleTextToSpeech = (paragraphId) => {
@@ -21,21 +20,19 @@ const App = () => {
   };
 
   const handleLanguageChange = (lang) => {
-    setLanguage(lang);  // Update the language for TTS
+    setLanguage(lang);
   };
 
   return (
     <div className="App">
-      {/* Render the Header */}
+      {/* Ensure the Header is rendered properly */}
       <Header />
-
       {/* Render the Control Box */}
       <ControlBox
         onChangeLevel={handleLevelChange}
         onTextToSpeech={handleTextToSpeech}
         onLanguageSelect={handleLanguageChange}
       />
-
       {/* Render the Exhibit based on selected level */}
       {/* <Exhibit level={level} /> */}
     </div>

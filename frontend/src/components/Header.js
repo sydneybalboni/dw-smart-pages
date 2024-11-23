@@ -1,15 +1,19 @@
 // src/components/Header.js
 import React from 'react';
 import '../styles/Header.css';
-// Remove unused imports
-// import { FaVolumeUp, FaLanguage } from 'react-icons/fa';  // These are not being used
-// import { IoIosBody } from 'react-icons/io';  // Remove unused icons
+import discoveryWorldLogo from '../assets/discoveryworldlogo.svg';
 
 const Header = () => {
   return (
-    <header>
-      <h1>Exhibit Name</h1>
-      {/* Other header content */}
+    <header className="header">
+      <div className="logo-container">
+        <img
+          src={discoveryWorldLogo} // Correct path for assets in public folder
+          alt="Exhibit Logo"
+          className="logo"
+        />
+      </div>
+      <h1 className="exhibit-name">EXHIBIT NAME</h1>
     </header>
   );
 };
