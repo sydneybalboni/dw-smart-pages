@@ -1,0 +1,90 @@
+/* src/components/ControlBox.css */
+
+/* ControlBox container */
+.control-box {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    margin-top: 80px;
+    border-radius: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Space out controls */
+    align-items: center;
+    width: 90%;  /* ControlBox width is 90% of its container */
+    max-width: 800px;  /* Set max width for better control */
+    margin: 0 auto;  /* Center ControlBox on the page */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for modern feel */
+    border: 1px solid #e5e7eb;  /* Light border */
+  }
+  
+  /* Style for each individual control (dropdown, buttons, etc.) */
+  .control {
+    margin-right: 20px;
+    margin-bottom: 15px; /* Add some margin at the bottom for wrapping */
+    flex: 1;
+    min-width: 150px; /* Ensure each control has a minimum width */
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+  }
+  
+  /* Dropdown and Select Element */
+  .control select {
+    padding: 12px 15px;
+    margin-top: 8px;
+    background-color: pink;  /* Green background for a modern look */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+  }
+  
+  /* Hover effect for the select dropdown */
+  .control select:hover {
+    background-color: darkmagenta;
+  }
+  
+  /* Button styling (modern, fun design) */
+  .control button {
+    padding: 12px 20px;
+    background: linear-gradient(45deg, #6e7fdb, #1e3a8a); /* Gradient button background */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Rounded edges for buttons */
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  /* Button hover effects */
+  .control button:hover {
+    transform: scale(1.05);  /* Slight zoom effect */
+    background: linear-gradient(45deg, #1e3a8a, #6e7fdb); /* Reverse gradient on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow on hover */
+  }
+  
+  /* Style for the ControlBox label */
+  .control label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  /* Responsive Design - Mobile/Tablet */
+  @media (max-width: 768px) {
+    .control-box {
+      padding: 15px;
+      width: 95%; /* Use more width on smaller screens */
+    }
+  
+    .control select, .control button {
+      font-size: 0.9rem; /* Reduce font size on smaller screens */
+    }
+  }
+  
