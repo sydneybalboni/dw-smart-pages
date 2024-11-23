@@ -1,6 +1,7 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from data_handler import load_data
+from chatbot import generate_response
 import json
 
 # Initialize FastAPI app
@@ -18,6 +19,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+settings = {"level": "beginner", "language": "english"}
+
 # Base route
 @app.get("/")
 def read_root():
@@ -29,6 +32,13 @@ def get_history():
     # Replace with logic to fetch conversation history
     return {"history": []}
 
+@app.post("/settings")
+async def update_settings(new_settings):
+    global settings
+    settings.level = new_settings.level
+    settings.language = new_settings.language
+    return {"message": "Settings updated successfully"}
+
 @app.websocket("/ws/chat")
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
@@ -38,8 +48,9 @@ async def websocket_endpoint(websocket: WebSocket):
             data = await websocket.receive_text()
             print(f"Received message: {data}")
 
-            # Prepare and send a JSON response
-            response = {"response": f"You said: {data}"}
+            chatbot_response = generate_response(data)
+            
+            response = {"response": f"{chatbot_response}"}
             await websocket.send_text(json.dumps(response))
     except WebSocketDisconnect:
         print("Client disconnected")
