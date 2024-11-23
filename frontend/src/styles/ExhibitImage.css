@@ -1,0 +1,14 @@
+/* Styling for the exhibit image */
+.exhibit-image-container {
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    margin-bottom: 20px; /* Add space below the image */
+  }
+  
+  .exhibit-image {
+    width: 100%; /* Make the image responsive */
+    max-width: 600px; /* Limit the maximum width */
+    border-radius: 10px; /* Optional: Rounded corners for the image */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow */
+  }
+  

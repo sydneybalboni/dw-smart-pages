@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Header from './components/Header';  // Ensure Header is imported
 import ControlBox from './components/Controlbox';  // ControlBox import
 import Exhibit from './components/Exhibit';  // Exhibit import
+import ExhibitImage from './components/ExhibitImage'; // This path depends on your project structure
 import './App.css';
 
 const App = () => {
@@ -27,6 +28,8 @@ const App = () => {
     <div className="App">
       {/* Ensure the Header is rendered properly */}
       <Header />
+      {/* Display the Exhibit Image */}
+      <ExhibitImage src="/assets/GreatLakes.jpg" alt="Exhibit Display" />
       {/* Render the Control Box */}
       <ControlBox
         onChangeLevel={handleLevelChange}
