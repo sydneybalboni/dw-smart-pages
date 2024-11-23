@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-
 
 import "../styles/Header.css";
 import discoveryWorldLogo from "../assets/Discovery-World.svg";
@@ -8,36 +7,37 @@ import { FaUserCircle } from "react-icons/fa";
 import { IoAddCircle } from "react-icons/io5";
 
 const Header = () => {
-  const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
   const dropdownRef = useRef(null);
-
-  // Toggle the dropdown menu
-  const toggleDropdown = () => {
-    setIsDropdownVisible(!isDropdownVisible);
-  };
-
-  // Close the dropdown when clicking outside
-  // const handleClickOutside = (event) => {
-  //   if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-  //     setIsDropdownVisible(false);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleClickOutside);
-  //   };
-  // }, []);
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Handle navigation to a new page
   const goToPage = (path) => {
     if (location.pathname !== path) {
       navigate(path);
     }
   };
+
+  // Toggle dropdown visibility
+  const toggleDropdown = (dropdownType) => {
+    setOpenDropdown(openDropdown === dropdownType ? null : dropdownType);
+  };
+
+  // Close dropdown when clicking outside
+  const handleClickOutside = (event) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      setOpenDropdown(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="header">
@@ -49,33 +49,34 @@ const Header = () => {
           onClick={() => goToPage("/")}
         />
       </div>
-      <h1 className="exhibit-name">EXHIBIT NAME</h1>
+
 
       {/* Badge Icon and Dropdown */}
-      <div className="badges-button">
+      <div className="badges-button" ref={dropdownRef}>
         <IoAddCircle
           className="badges-icon"
-          onClick={() => toggleDropdown('badges')}
+          onClick={() => toggleDropdown("badges")}
         />
-        {openDropdown === 'badges' && (
-          <div className="badges-dropdown">
-            {/* Add badges here */}
+        {openDropdown === "badges" && (
+          <div className="dropdown-menu badges-dropdown">
+            <button onClick={() => alert("Badge 1")}>Badge 1</button>
+            <button onClick={() => alert("Badge 2")}>Badge 2</button>
           </div>
         )}
       </div>
 
+      {/* User Icon and Dropdown */}
       <div className="user-profile" ref={dropdownRef}>
         <FaUserCircle
           className="user-icon"
-          onClick={toggleDropdown}
-          // aria-expanded={isDropdownVisible} // Accessibility support
+          onClick={() => toggleDropdown("account")}
         />
-        {openDropdown === 'account' && (
+        {openDropdown === "account" && (
           <div className="dropdown-menu">
-          <button onClick={() => goToPage("/account")}>Account</button>
-          <button onClick={() => alert('Go to Badge Page')}>Badge</button>
-          <button onClick={() => alert('Sign Out')}>Sign Out</button>
-        </div>
+            <button onClick={() => goToPage("/account")}>Account</button>
+            <button onClick={() => alert("Go to Badge Page")}>Badge</button>
+            <button onClick={() => alert("Sign Out")}>Sign Out</button>
+          </div>
         )}
       </div>
     </header>
