@@ -33,13 +33,13 @@
   display: flex;
   align-items: center;
   position: absolute;  /* Position logo to the left */
-  left: 20px; /* Distance from the left side */
+  left: 30px; /* Distance from the left side */
 }
 
 /* Logo styling */
 .logo {
-  width: 70px;
-  height: 70px;
+  width: 140px;
+  height: 140px;
 }
 
 /* Exhibit Name Styling */
@@ -74,7 +74,7 @@
 }
 
 .user-icon:hover {
-  color: #f6a5c0; /* Change color on hover */
+  color: #ef558b; /* Change color on hover */
 }
 
 /* Dropdown Menu Styling */

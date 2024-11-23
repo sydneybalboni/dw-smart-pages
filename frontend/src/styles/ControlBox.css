@@ -75,13 +75,6 @@
   box-sizing: border-box; /* Ensure padding and border don't affect width calculation */
 }
 
-/* Button hover effects */
-.control button:hover {
-  transform: scale(1.05); /* Slight zoom effect */
-  background: linear-gradient(45deg, #1e3a8a, #6e7fdb); /* Reverse gradient on hover */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow on hover */
-}
-
 /* Style for the ControlBox label */
 .control label {
   font-size: 1rem;

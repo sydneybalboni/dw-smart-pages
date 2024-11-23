@@ -6,7 +6,7 @@ const Exhibit = ({ level, handleTTSClick }) => {
   const content = {
     Beginner: "This is a simple explanation of the exhibit.",
     Intermediate: "This is a more detailed explanation of the exhibit.",
-    Advanced: "This is a complex, in-depth analysis of the exhibit, intended for advanced learners."
+    Advanced: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam faucibus orci nec lectus aliquet, sed volutpat purus condimentum. Integer pretium quam quis turpis faucibus, a maximus lorem luctus. Vivamus ut nisl ultricies, euismod neque ac, vulputate orci. Suspendisse potenti. Curabitur ut velit nec lorem viverra cursus. Pellentesque imperdiet nisl et arcu fermentum, nec euismod mi fringilla. Aliquam erat volutpat. Nulla facilisi. Sed in quam et felis suscipit vehicula. Sed placerat nisl at sapien hendrerit, sit amet ullamcorper lorem feugiat. Ut id enim eu sapien ultricies condimentum non a eros. Nulla tristique velit vitae sollicitudin blandit."
   };
 
   return (
