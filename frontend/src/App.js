@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AccountPage from "./components/AccountPage";
 import Header from "./components/Header";
@@ -8,12 +8,14 @@ import ControlBox from "./components/Controlbox";
 import Exhibit from "./components/Exhibit";
 import ChatBot from "./components/ChatBot";
 import ChatButton from "./components/ChatButton";
+import BadgesModal from './components/BadgesModal';
 import "./App.css";
 
 const MainPage = () => {
   const [level, setLevel] = useState("Beginner");
   const [language, setLanguage] = useState("en-US");
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isBadgesModalOpen, setBadgesModalOpen] = useState(false); //state of badges pop up
 
   // Handle TTS functionality
   const handleTTSClick = (text) => {
@@ -34,6 +36,10 @@ const MainPage = () => {
   // Toggle ChatBot visibility
   const toggleChat = () => setIsChatOpen(!isChatOpen);
 
+  useEffect(() => { 
+    setBadgesModalOpen(true);
+  }, []);
+ 
   return (
     <div className="App">
       {/* Header */}
@@ -64,6 +70,17 @@ const MainPage = () => {
       {/* ChatBot */}
       {isChatOpen && <ChatBot onClose={toggleChat} />}
       {!isChatOpen && <ChatButton onClick={toggleChat} />}
+
+      {/* Badges Modal Component */}
+      <BadgesModal isOpen={isBadgesModalOpen} 
+      onClose={() => {
+        console.log("Closing Modal");
+        setBadgesModalOpen(false)
+      }}>
+        <h2>You have unlocked a new badge!</h2>
+        <p>insert badge here.</p>
+        <button onClick={() => setBadgesModalOpen(false)}>Close</button>
+      </BadgesModal>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Header.css";
 import discoveryWorldLogo from "../assets/Discovery-World.svg";
 import { FaUserCircle } from "react-icons/fa";
-import { TbHexagonPlusFilled } from "react-icons/tb";
+import { IoAddCircle } from "react-icons/io5";
 
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -53,7 +53,7 @@ const Header = () => {
 
       {/* Badge Icon and Dropdown */}
       <div className="badges-button">
-        <TbHexagonPlusFilled
+        <IoAddCircle
           className="badges-icon"
           onClick={() => toggleDropdown('badges')}
         />
