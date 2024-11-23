@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import "../styles/ControlBox.css";
 import Exhibit from "./Exhibit";
 
-const ControlBox = ({ onChangeLevel, onLanguageSelect, language }) => {
+const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
   const [level, setLevel] = useState("Beginner");
-  const [selectedLang, setSelectedLang] = useState(language);
+  const [selectedLang, setSelectedLang] = useState("en-US");
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
 
