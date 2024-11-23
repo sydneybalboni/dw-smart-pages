@@ -30,12 +30,6 @@ settings = Settings(level="beginner", language="english")
 def read_root():
     return {"message": "Welcome to the Chatbot API!"}
 
-# History route to fetch conversation history
-@app.get("/history")
-def get_history():
-    # Replace with logic to fetch conversation history
-    return {"history": []}
-
 # Settings route
 @app.post("/settings")
 async def update_settings(new_settings: Settings):

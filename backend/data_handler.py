@@ -15,14 +15,14 @@ def load_data():
     
     # Iterate over each row in the DataFrame to populate the dictionary
     for _, row in df.iterrows():
-        exhibit_name = row['Exhibit']
+        exhibit_name = row['exhibit']
         data_dict[exhibit_name] = {
-            'english_beginner': row.get('Beginner', ''),
-            'english_intermediate': row.get('Intermediate', ''),
-            'english_advanced': row.get('Advanced', ''),
-            'spanish_beginner': row.get('Spanish Beginner', ''),
-            'spanish_intermediate': row.get('Spanish Intermediate', ''),
-            'spanish_advanced': row.get('Spanish Advanced', '')
+            'en-US_beginner': row.get('en-US_beginner', ''),
+            'en-US_intermediate': row.get('en-US_intermediate', ''),
+            'en-US_advanced': row.get('en-US_advanced', ''),
+            'es-MX_beginner': row.get('es-MX_beginner', ''),
+            'es-MX_intermediate': row.get('es-MX_intermediate', ''),
+            'es-MX_advanced': row.get('es-MX_advanced', '')
         }
 
     # TODO: Generate missing descriptions for each exhibit
