@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import '../styles/Header.css';
 import discoveryWorldLogo from '../assets/Discovery-World.svg';
 import { FaUserCircle } from 'react-icons/fa';
+import { TbHexagonPlusFilled } from "react-icons/tb";
 
 const Header = () => {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
@@ -22,6 +23,13 @@ const Header = () => {
         />
       </div>
       <h1 className="exhibit-name">EXHIBIT NAME</h1>
+
+      {/* Badge Icon and Dropdown */}
+      <div className="badges-button">
+        <TbHexagonPlusFilled
+        className="badges-icon"
+        />
+      </div>
 
       {/* User Icon and Dropdown */}
       <div className="user-profile">

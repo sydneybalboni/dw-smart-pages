@@ -52,6 +52,26 @@
   text-align: center; /* Ensure it's centered */
 }
 
+.badges-button {
+  position: absolute;
+  right:80px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badges-icon {
+  font-size: 2.75rem;
+  color: #201c51;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.badges-icon:hover {
+  color: #ef558b;
+}
+
 /* Google Font import (add this to the HTML or body tag) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
