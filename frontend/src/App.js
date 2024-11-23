@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AccountPage from "./components/AccountPage";
+import LoginSignUp from "./components/LoginSignup";
 import Header from "./components/Header";
 import ExhibitName from "./components/ExhibitName";
 import ExhibitImage from "./components/ExhibitImage";
@@ -74,6 +75,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path ="/login" element={<LoginSignUp />} />
       </Routes>
     </Router>
   );
