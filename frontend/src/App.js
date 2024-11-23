@@ -40,7 +40,7 @@ const MainPage = () => {
       <Header />
 
       {/* Render Exhibit Name */}
-      <ExhibitName name="Exhibit Name" />
+      <ExhibitName name="GREAT LAKES FUTURE" />
 
       {/* Display the Exhibit Image */}
       <ExhibitImage 
