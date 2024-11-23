@@ -54,8 +54,14 @@ const Header = () => {
       {/* Badge Icon and Dropdown */}
       <div className="badges-button">
         <TbHexagonPlusFilled
-        className="badges-icon"
+          className="badges-icon"
+          onClick={() => toggleDropdown('badges')}
         />
+        {openDropdown === 'badges' && (
+          <div className="badges-dropdown">
+            {/* Add badges here */}
+          </div>
+        )}
       </div>
 
       <div className="user-profile" ref={dropdownRef}>
@@ -64,7 +70,7 @@ const Header = () => {
           onClick={toggleDropdown}
           // aria-expanded={isDropdownVisible} // Accessibility support
         />
-        {isDropdownVisible && (
+        {openDropdown === 'account' && (
           <div className="dropdown-menu">
           <button onClick={() => goToPage("/account")}>Account</button>
           <button onClick={() => alert('Go to Badge Page')}>Badge</button>
