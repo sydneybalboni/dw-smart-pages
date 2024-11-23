@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100vh;
+    background: linear-gradient(#A3C9D1, #201c51)
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20%;
+    width: 90%;
+    background: #fff;
+    padding-bottom: 0px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.text{
+    color: #A3C9D1;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.underline{
+    width: 61px;
+    height: 6px;
+    background: #A3C9D1;
+    border-radius: 9px;
+}
+
+.inputs{
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 15%;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    height: 80px;
+    background: #eaeaea;
+    border-radius: 6px;
+}
+
+.input img{
+    margin: 0px 30px;
+}
+
+input input{
+    height: 50%;
+    width: 90%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #797979;
+    font-size: 19px;
+}
+
+.forgot-password{
+    padding-left: 62px;
+    margin-top: 27px;
+    color: #797979;
+    font-size: 18px;
+}
+
+.forgot-password span{
+    color: #201c51;
+    cursor: pointer;
+}
+
+.submit-container{
+    display: flex;
+    gap: 20%;
+    margin: 10%;
+}
+
+.submit{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    width: 220px;
+    height:59px;
+    color:#fff;
+    background: #201c51;
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.gray{
+    background: #EAEAEA;
+    color: #676767;
+}
