@@ -28,48 +28,24 @@
     margin-top: 10px;
   }
   
-  /* Badges section */
-  .badges-section {
-    margin-top: 20px;
-  }
-  
-  .badges-section h3 {
-    font-size: 1.8rem;
-    color: #444;
-    margin-bottom: 15px;
-  }
-  
   .badges {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+    justify-content: center;
   }
   
-  /* Individual badge styling */
-  .badge {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+  .badge-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    object-fit: cover;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .badge-icon {
-    font-size: 1.5rem;
-  }
-  
-  .badge-name {
-    font-weight: bold;
+    filter: grayscale(100%); /* Grayed out by default */
+    transition: transform 0.2s, filter 0.3s; /* Smooth transition for hover effects */
   }
   
   /* Hover effect for badges */
-  .badge:hover {
-    background-color: #e9f7ff;
-    border-color: #cce7ff;
-    cursor: pointer;
+  .badge-image:hover {
+    transform: scale(1.1);
   }
