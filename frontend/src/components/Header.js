@@ -6,6 +6,11 @@ import discoveryWorldLogo from "../assets/Discovery-World.svg";
 import { FaUserCircle } from "react-icons/fa";
 import { IoAddCircle } from "react-icons/io5";
 
+function importAllBadges(r) {
+  return r.keys().map(r);
+}
+const badges = importAllBadges(require.context('../assets/badges', false, /\.(png)/))
+
 const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
   const dropdownRef = useRef(null);
@@ -59,11 +64,18 @@ const Header = () => {
         />
         {openDropdown === "badges" && (
           <div className="dropdown-menu badges-dropdown">
-            <button onClick={() => alert("Badge 1")}>Badge 1</button>
-            <button onClick={() => alert("Badge 2")}>Badge 2</button>
+            <div className="image-grid">
+              {badges.map((image, index) => (
+                <img key={index} 
+                  src={image} 
+                  alt={`Image ${index}`} 
+                  className="grid-item"
+                />
+              ))}
+            </div>
           </div>
         )}
-      </div>
+      </div> 
 
       {/* User Icon and Dropdown */}
       <div className="user-profile" ref={dropdownRef}>
@@ -74,7 +86,6 @@ const Header = () => {
         {openDropdown === "account" && (
           <div className="dropdown-menu">
           <button onClick={() => goToPage("/account")}>Account</button>
-          <button onClick={() => alert('Go to Badge Page')}>Badge</button>
           <button onClick={() => goToPage("/login")}>Sign In</button>
         </div>
         )}

@@ -70,6 +70,19 @@
   gap: 10px;
 }
 
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  justify-items: center;
+}
+
+.grid-item {
+  width: 100%;
+  max-width: 200;
+  height: auto;
+}
+
 /* Google Font import (add this to the HTML or body tag) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 

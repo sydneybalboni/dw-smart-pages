@@ -49,7 +49,7 @@ const MainPage = () => {
     return () => {
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, []);  
 
   return (
     <div className="App">
