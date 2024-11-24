@@ -1,97 +1,130 @@
-import React, { useState, useEffect, useRef } from "react";
-import "../styles/ChatBot.css";
-import ChatMessage from "./ChatMessage";
-import { FaPaperPlane } from "react-icons/fa"; // Import paper airplane icon
-import botIcon from "../assets/chatbotdw.png"; // Import your robot icon
+import React, { useState, useEffect } from "react";
+import "../styles/ControlBox.css";
+import Exhibit from "./Exhibit";
+import { FaPlay, FaPause } from "react-icons/fa";
 
-const ChatBot = ({ onClose }) => {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false); // Track loading state
-  const socketRef = useRef(null);
-  const messagesEndRef = useRef(null);
+const ControlBox = ({ onChangeLevel, onLanguageSelect }) => {
+  const [level, setLevel] = useState("beginner");
+  const [selectedLang, setSelectedLang] = useState("en-US");
+  const [setVoices] = useState([]);
+  const [selectedVoice, setSelectedVoice] = useState(null);
+  const [exhibitKey, setExhibitKey] = useState(0);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
-    socketRef.current = new WebSocket("ws://localhost:8000/ws/chat");
+    const synth = window.speechSynthesis;
 
-    socketRef.current.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      const botMessage = { sender: "bot", text: data.response };
-      setMessages((prev) => [...prev, botMessage]);
-      setLoading(false); // Stop loading when response is received
+    const loadVoices = () => {
+      const availableVoices = synth.getVoices();
+      setVoices(availableVoices);
+
+      const defaultVoice = availableVoices.find((voice) => voice.lang === selectedLang);
+      setSelectedVoice(defaultVoice);
     };
 
-    socketRef.current.onerror = (error) => console.error("WebSocket error:", error);
-    socketRef.current.onclose = () => console.log("WebSocket closed");
-
-    return () => socketRef.current?.close();
-  }, []);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
-
-  const handleSend = () => {
-    if (!input.trim()) return;
-
-    const userMessage = { sender: "user", text: input };
-    setMessages((prev) => [...prev, userMessage]);
-    setLoading(true); // Start loading when a message is sent
-
-    if (socketRef.current?.readyState === WebSocket.OPEN) {
-      socketRef.current.send(JSON.stringify({ message: input }));
+    if (window.speechSynthesis.onvoiceschanged !== undefined) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
     } else {
-      console.error("WebSocket is not open");
+      loadVoices();
     }
 
-    setInput(""); // Clear the input field
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, [selectedLang, setVoices]);
+
+  const sendSettingsToBackend = async (level, language) => {
+    try {
+      console.log("Payload sent to backend:", { level, language });
+
+      const response = await fetch("http://127.0.0.1:8000/settings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ level, language }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to send settings: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log("Backend response:", data);
+      
+      setExhibitKey(prevKey => prevKey + 1);
+    } catch (error) {
+      console.error("Error sending settings to backend:", error);
+    }
+  };
+
+  const handleAgeLevelChange = (e) => {
+    const newLevel = e.target.value;
+    setLevel(newLevel);
+    onChangeLevel(newLevel);
+    sendSettingsToBackend(newLevel, selectedLang);
+  };
+
+  const handleLanguageSelect = (e) => {
+    const newLanguage = e.target.value;
+    setSelectedLang(newLanguage);
+    onLanguageSelect(newLanguage);
+    sendSettingsToBackend(level, newLanguage);
+  };
+
+  const handleTTSClick = (text) => {
+    const synth = window.speechSynthesis;
+    
+    if (isSpeaking) {
+      synth.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = selectedLang;
+    utterance.voice = selectedVoice;
+    
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    
+    synth.speak(utterance);
   };
 
   return (
-    <div className="chatbot">
-      <div className="chat-header">
-        DiscoverBot
-        <button className="chat-header-close" onClick={onClose}>
-          ✖
-        </button>
-      </div>
-      <div className="chat-messages">
-        {messages.map((msg, index) => (
-          <ChatMessage key={index} message={msg} />
-        ))}
-
-        {/* Display the "thinking" animation when loading */}
-        {loading && (
-          <div className="thinking-bubble">
-            <div className="dots">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-        )}
-
-        <div ref={messagesEndRef}></div>
+    <div className="control-box">
+      <div className="control">
+        <label>Reading Level</label>
+        <select value={level} onChange={handleAgeLevelChange}>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
       </div>
 
-      {/* Robot Icon */}
-      <div className="bot-icon-container">
-        <img src={botIcon} alt="Robot Icon" className="bot-icon" />
+      <div className="control">
+        <label>Select Language</label>
+        <select value={selectedLang} onChange={handleLanguageSelect}>
+          <option value="en-US">English</option>
+          <option value="es-MX">Español</option>
+          <option value="fr-FR">Français</option>
+          <option value="de-DE">Deutsch</option>
+          <option value="zh-CN">中文 (Mandarin)</option>
+          <option value="pt-PT">Português</option>
+          <option value="it-IT">Italiano</option>
+        </select>
       </div>
 
-      <div className="chat-input">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message..."
-        />
-        <button onClick={handleSend} className="send-button">
-          <FaPaperPlane />
-        </button>
-      </div>
+      <Exhibit 
+        key={exhibitKey}
+        level={level} 
+        language={selectedLang}
+        handleTTSClick={handleTTSClick}
+        isSpeaking={isSpeaking}
+      />
     </div>
   );
 };
 
-export default ChatBot;
+export default ControlBox;

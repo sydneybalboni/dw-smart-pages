@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Exhibit.css";
-import { FaPlay } from "react-icons/fa"; // Import a play icon
+import { FaPlay, FaPause } from "react-icons/fa"; // Import both play and pause icons
 
 const Exhibit = ({ level, language, handleTTSClick }) => {
   const [description, setDescription] = useState("Loading description...");
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   // Fetch the description whenever the level or language changes
   useEffect(() => {
@@ -21,7 +22,7 @@ const Exhibit = ({ level, language, handleTTSClick }) => {
         }
     
         const data = await response.json();
-        setDescription(data.description); // Set the description string from the backend
+        setDescription(data.description);
       } catch (error) {
         console.error("Error fetching description:", error);
         setDescription("Unable to load description. Please try again later.");
@@ -29,7 +30,33 @@ const Exhibit = ({ level, language, handleTTSClick }) => {
     };
 
     fetchDescription();
+
+    // Cleanup function to stop speaking and reset state when component unmounts
+    return () => {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    };
   }, [level, language]);
+
+  // Modified TTS handler that manages speaking state
+  const handleTTSWithState = (text) => {
+    const synth = window.speechSynthesis;
+    
+    if (isSpeaking) {
+      synth.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = language;
+    
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    
+    synth.speak(utterance);
+  };
 
   return (
     <div className="exhibit">
@@ -37,21 +64,25 @@ const Exhibit = ({ level, language, handleTTSClick }) => {
       <div className="section prasent">
         <div className="header-row">
           <h2>Prasent</h2>
-          {/* Play button aligned with the paragraph box */}
+          {/* Play/Pause button with dynamic icon */}
           <div
             className="play-button"
-            onClick={() => handleTTSClick(description)} // Trigger TTS for Prasent
+            onClick={() => handleTTSWithState(description)}
             role="button"
-            aria-label="Play Prasent Description"
+            aria-label={isSpeaking ? "Pause Prasent Description" : "Play Prasent Description"}
           >
-            <FaPlay className="play-icon" />
+            {isSpeaking ? (
+              <FaPause className="play-icon" />
+            ) : (
+              <FaPlay className="play-icon" />
+            )}
           </div>
         </div>
         {/* Paragraph box */}
         <div
           id="prasent"
           className="paragraph-box"
-          onClick={() => handleTTSClick(description)} // Trigger TTS when clicking the box
+          onClick={() => handleTTSWithState(description)}
         >
           {description}
         </div>

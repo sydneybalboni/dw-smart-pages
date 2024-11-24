@@ -7,7 +7,8 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect }) => {
   const [selectedLang, setSelectedLang] = useState("en-US");
   const [setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
-  const [exhibitKey, setExhibitKey] = useState(0); // Add key to force re-render
+  const [exhibitKey, setExhibitKey] = useState(0);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   // Load available voices and set the default voice based on selected language
   useEffect(() => {
@@ -26,6 +27,11 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect }) => {
     } else {
       loadVoices();
     }
+
+    // Cleanup function to stop speaking when component unmounts
+    return () => {
+      window.speechSynthesis.cancel();
+    };
   }, [selectedLang, setVoices]);
 
   const sendSettingsToBackend = async (level, language) => {
@@ -47,7 +53,6 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect }) => {
       const data = await response.json();
       console.log("Backend response:", data);
       
-      // Force Exhibit to re-render after successful backend update
       setExhibitKey(prevKey => prevKey + 1);
     } catch (error) {
       console.error("Error sending settings to backend:", error);
@@ -69,10 +74,24 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect }) => {
   };
 
   const handleTTSClick = (text) => {
+    const synth = window.speechSynthesis;
+    
+    if (isSpeaking) {
+      synth.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = selectedLang;
     utterance.voice = selectedVoice;
-    window.speechSynthesis.speak(utterance);
+    
+    // Add event listeners to track speaking state
+    utterance.onstart = () => setIsSpeaking(true);
+    utterance.onend = () => setIsSpeaking(false);
+    utterance.onerror = () => setIsSpeaking(false);
+    
+    synth.speak(utterance);
   };
 
   return (
@@ -103,7 +122,8 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect }) => {
         key={exhibitKey}
         level={level} 
         language={selectedLang}
-        handleTTSClick={handleTTSClick} 
+        handleTTSClick={handleTTSClick}
+        isSpeaking={isSpeaking}
       />
     </div>
   );
