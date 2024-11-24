@@ -18,6 +18,7 @@ const MainPage = () => {
   const [language, setLanguage] = useState("en-US");
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isBadgesModalOpen, setBadgesModalOpen] = useState(false);
+  const[hasModalShown, setHasModalShown] = useState(false);
 
   // Handle TTS functionality
   const handleTTSClick = (text) => {
@@ -39,17 +40,25 @@ const MainPage = () => {
   const toggleChat = () => setIsChatOpen(!isChatOpen);
 
   useEffect(() => {
-    // Open the modal when the component loads
-    setBadgesModalOpen(true);
+    if (!hasModalShown) {
+      // Open the modal when the component loads
+      setBadgesModalOpen(true);
+      setHasModalShown(true);  // Mark the modal as shown
+ 
+      // Disable scrolling when the modal is open
+      document.body.style.overflow = "hidden";
 
-    // Disable scrolling when the modal is open
-    document.body.style.overflow = isBadgesModalOpen ? "hidden" : "auto";
+      // Clean up the scrolling style on modal close or unmount
+      return () => {
+        document.body.style.overflow = "auto";
+      };
+    }
+  }, [hasModalShown]);  // Effect depends on hasModalShown
 
-    // Clean up the scrolling style on unmount or modal close
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
+  const closeModal = () => {
+    setBadgesModalOpen(false);
+    document.body.style.overflow = "auto";  // Re-enable scrolling when modal is closed
+  };
 
   return (
     <div className="App">
@@ -88,7 +97,7 @@ const MainPage = () => {
               backgroundColor: "rgba(0, 0, 0, 0.5)", // Transparent overlay
               zIndex: 999,
             }}
-            onClick={() => setBadgesModalOpen(false)} // Close modal if clicking outside
+            onClick={closeModal} // Close modal if clicking outside 
           />
           <div
             style={{
@@ -119,7 +128,7 @@ const MainPage = () => {
               }}
               onMouseEnter={(e) => (e.target.style.transform = "scale(1.2)")}
               onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
-              onClick={() => setBadgesModalOpen(false)} // Close the modal when clicking the X
+              onClick={closeModal} // Close the modal when clicking the X
             />
             <h2
               style={{
