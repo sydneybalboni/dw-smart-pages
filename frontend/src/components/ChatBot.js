@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/ChatBot.css";
-import botIcon from "../assets/chatbotdw.png";
+import ChatMessage from "./ChatMessage";
+import { FaPaperPlane } from "react-icons/fa"; // Import paper airplane icon
+import botIcon from "../assets/chatbotdw.png"; // Import your robot icon
 
 const ChatBot = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
@@ -52,17 +54,12 @@ const ChatBot = ({ onClose }) => {
       </div>
       <div className="chat-messages">
         {messages.map((msg, index) => (
-          <div
-            key={index}
-            className={`chat-message ${msg.sender === "user" ? "user-message" : "bot-message"}`}
-          >
-            {msg.text}
-          </div>
+          <ChatMessage key={index} message={msg} />
         ))}
         <div ref={messagesEndRef}></div>
       </div>
 
-      {/* Little Robot Icon */}
+      {/* Robot Icon */}
       <div className="bot-icon-container">
         <img src={botIcon} alt="Robot Icon" className="bot-icon" />
       </div>
@@ -74,7 +71,9 @@ const ChatBot = ({ onClose }) => {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message..."
         />
-        <button onClick={handleSend}>Send</button>
+        <button onClick={handleSend} className="send-button">
+          <FaPaperPlane /> {/* Paper airplane icon */}
+        </button>
       </div>
     </div>
   );
