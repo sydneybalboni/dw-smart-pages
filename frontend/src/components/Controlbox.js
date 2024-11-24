@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import "../styles/ControlBox.css";
 import Exhibit from "./Exhibit";
 
-const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
+const ControlBox = ({ onChangeLevel, onLanguageSelect }) => {
   const [level, setLevel] = useState("beginner");
   const [selectedLang, setSelectedLang] = useState("en-US");
   const [voices, setVoices] = useState([]);
   const [selectedVoice, setSelectedVoice] = useState(null);
+  const [exhibitKey, setExhibitKey] = useState(0); // Add key to force re-render
 
   // Load available voices and set the default voice based on selected language
   useEffect(() => {
@@ -29,8 +30,8 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
 
   const sendSettingsToBackend = async (level, language) => {
     try {
-      console.log("Payload sent to backend:", { level, language }); // Debugging
-  
+      console.log("Payload sent to backend:", { level, language });
+
       const response = await fetch("http://127.0.0.1:8000/settings", {
         method: "POST",
         headers: {
@@ -38,13 +39,16 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
         },
         body: JSON.stringify({ level, language }),
       });
-  
+
       if (!response.ok) {
         throw new Error(`Failed to send settings: ${response.statusText}`);
       }
-  
+
       const data = await response.json();
-      console.log("Backend response:", data); // Debugging
+      console.log("Backend response:", data);
+      
+      // Force Exhibit to re-render after successful backend update
+      setExhibitKey(prevKey => prevKey + 1);
     } catch (error) {
       console.error("Error sending settings to backend:", error);
     }
@@ -54,8 +58,6 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
     const newLevel = e.target.value;
     setLevel(newLevel);
     onChangeLevel(newLevel);
-
-    // Send updated settings to the backend
     sendSettingsToBackend(newLevel, selectedLang);
   };
 
@@ -63,16 +65,13 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
     const newLanguage = e.target.value;
     setSelectedLang(newLanguage);
     onLanguageSelect(newLanguage);
-
-    // Send updated settings to the backend
     sendSettingsToBackend(level, newLanguage);
   };
 
-  // TTS function to be passed as a prop
   const handleTTSClick = (text) => {
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = selectedLang; // Set the language based on user selection
-    utterance.voice = selectedVoice; // Set the selected voice
+    utterance.lang = selectedLang;
+    utterance.voice = selectedVoice;
     window.speechSynthesis.speak(utterance);
   };
 
@@ -100,8 +99,12 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
         </select>
       </div>
 
-      {/* Only one instance of Exhibit should be rendered */}
-      <Exhibit level={level} handleTTSClick={handleTTSClick} />
+      <Exhibit 
+        key={exhibitKey}
+        level={level} 
+        language={selectedLang}
+        handleTTSClick={handleTTSClick} 
+      />
     </div>
   );
 };
