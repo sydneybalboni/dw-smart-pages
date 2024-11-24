@@ -27,123 +27,79 @@
   font-weight: bold;
 }
 
-/* Trivia Score Section */
-.trivia-score {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  padding: 10px;
-  background-color: #efefef;
-  border-radius: 5px;
-  font-weight: bold;
-  color: var(--my-dark-purple);
-}
-
-/* Question Box */
-.trivia-question {
-  background-color: var(--my-dark-pink);
-  color: white;
-  border-radius: var(--my-border-size);
-  padding: 20px;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-  font-weight: bold;
-}
-
-/* Options Grid */
-.trivia-options {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-}
-
-/* Option Buttons */
-.trivia-options button {
-  background-color: var(--my-dark-purple);
-  color: white;
-  border: none;
-  border-radius: var(--my-border-size);
-  padding: 15px 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.trivia-options button:hover {
-  background-color: #484193;
-  transform: scale(1.05);
-}
-
-/* Result Box */
-.result-box {
-  background-color: var(--my-dark-pink);
-  color: white;
-  border-radius: var(--my-border-size);
-  padding: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Result Message */
-.result-message {
-  font-size: 1rem;
-  color: var(--my-dark-purple);
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Score Box */
-.score-box {
-  background-color: var(--my-dark-purple);
-  color: white;
-  border-radius: var(--my-border-size);
-  padding: 15px;
-  font-size: 1rem;
-  font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-/* Commitment Message */
-.commitment-message {
-  font-size: 1.3rem;
-  color: var(--my-dark-purple);
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .trivia-section {
-    padding: 15px;
-  }
-
-  .trivia-section h2 {
-    font-size: 1.8rem;
-  }
-
+  /* Trivia Score Section */
   .trivia-score {
-    font-size: 1rem;
-    padding: 8px;
+    display: flex; /* Flex layout for side-by-side display */
+    justify-content: space-between; /* Spread content to the edges */
+    align-items: center; /* Center items vertically */
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+    background-color: #efefef;
+    border-radius:5px;
+    font-family: 'Poppins', sans-serif; /* Custom Google font */
+    color: #201c51;
+    font-weight: bold;
   }
-
+  
+  /* Container for the question box */
   .trivia-question {
-    font-size: 1.5rem;
-    padding: 15px;
+    background-color: #ef558b;
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    border: 2px solid #ccc;
+    border-radius: var(--my-border-size);
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
   }
-
+  
+  /* Options Grid */
+  .trivia-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  /* Each Option Button */
   .trivia-options button {
-    font-size: 0.9rem;
-    padding: 10px 8px;
+    background-color: #201c51;
+    font-family: 'Poppins', sans-serif;  /* Custom Google font */
+    color: white;
+    border: none;
+    border-radius: var(--my-border-size);
+    padding: 15px 20px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
   }
-
+  
+  /* Hover Effect for Option Buttons */
+  .trivia-options button:hover {
+    background-color: #484193;
+  }
+  
+  /* Result Box */
   .result-box {
+    background-color: #ef558b;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    border-radius: var(--my-border-size);
+    padding: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Result Message Styling */
+  .result-message {
+    /* margin-top: 10px; */
     font-size: 1rem;
     padding: 15px;
   }
