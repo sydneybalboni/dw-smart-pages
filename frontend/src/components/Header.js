@@ -9,7 +9,7 @@ import { IoMdRibbon } from "react-icons/io";
 function importAllBadges(r) {
   return r.keys().map(r);
 }
-const badges = importAllBadges(require.context('../assets/badges', false, /\.(png)/))
+const badges = importAllBadges(require.context('../assets/df', false, /\.(png)/))
 
 const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open

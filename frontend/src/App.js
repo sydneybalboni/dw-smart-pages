@@ -9,7 +9,7 @@ import ControlBox from "./components/Controlbox";
 import ChatBot from "./components/ChatBot";
 import ChatButton from "./components/ChatButton";
 import Trivia from "./components/Trivia"; // Import the Trivia component
-import popup from "./assets/badges/lakes.png";
+import popup from "./assets/badges/michlakes.png";
 import { IoClose } from "react-icons/io5"; // Import Close icon
 import "./App.css";
 
