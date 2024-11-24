@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import "../styles/Header.css";
 import discoveryWorldLogo from "../assets/Discovery-World.svg";
-import { FaUserCircle } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { IoAddCircle } from "react-icons/io5";
 
 const Header = () => {
@@ -41,15 +41,21 @@ const Header = () => {
 
   return (
     <header className="header">
+      {/* Discovery World Logo with Link */}
       <div className="logo-container">
-        <img
-          src={discoveryWorldLogo}
-          alt="Discovery World Logo"
-          className="logo"
-          onClick={() => goToPage("/")}
-        />
+        <a
+          href="https://www.discoveryworld.org" // External website link
+          target="_blank" // Opens the link in a new tab
+          rel="noopener noreferrer" // Security for external links
+          className="logo-link"
+        >
+          <img
+            src={discoveryWorldLogo}
+            alt="Discovery World Logo"
+            className="logo"
+          />
+        </a>
       </div>
-
 
       {/* Badge Icon and Dropdown */}
       <div className="badges-button" ref={dropdownRef}>
@@ -67,16 +73,16 @@ const Header = () => {
 
       {/* User Icon and Dropdown */}
       <div className="user-profile" ref={dropdownRef}>
-        <FaUserCircle
+        <FaBars
           className="user-icon"
           onClick={() => toggleDropdown("account")}
         />
         {openDropdown === "account" && (
           <div className="dropdown-menu">
-          <button onClick={() => goToPage("/account")}>Account</button>
-          <button onClick={() => alert('Go to Badge Page')}>Badge</button>
-          <button onClick={() => goToPage("/login")}>Sign In</button>
-        </div>
+            <button onClick={() => goToPage("/account")}>Account</button>
+            <button onClick={() => alert("Go to Badge Page")}>Badge</button>
+            <button onClick={() => goToPage("/login")}>Sign In</button>
+          </div>
         )}
       </div>
     </header>

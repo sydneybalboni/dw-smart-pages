@@ -21,8 +21,13 @@
 }
 
 .logo {
-  width: 140px;
+  width: 180x;
   height: auto;
+  transition: transform 0.2s ease; /* Smooth hover animation */
+}
+
+.logo:hover {
+  transform: scale(1.05); /* Slightly enlarge logo on hover */
 }
 
 /* Exhibit Name Styling */
@@ -135,7 +140,7 @@
   }
 
   .user-icon {
-    font-size: 2.2rem; /* Slightly larger for better usability */
+    font-size: 2.5rem; /* Slightly larger for better usability */
   }
 
   .dropdown-menu {
