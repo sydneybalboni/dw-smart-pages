@@ -8,11 +8,11 @@
   
   .chat-message.user {
     align-self: flex-end;
-    background-color: #F6A5C0;
+    background-color: #ef558b;
   }
   
   .chat-message.bot {
     align-self: flex-start;
-    background-color: #eaeaea;
+    background-color: #ef558b;
   }
   
