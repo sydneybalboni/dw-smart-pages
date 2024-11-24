@@ -1,49 +1,45 @@
-.chatbot {
+/* Little Robot Icon */
+.bot-icon-container {
+    position: absolute;
+    bottom: 53px; /* Positioned just above the input field */
+    left: 20px; /* Adjust as needed to align horizontally */
+    z-index: 1001; /* Ensure it stays above the chat interface */
+  }
+  
+  .bot-icon {
+    width: 55px; /* Set the size of the robot icon */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  /* ChatBot Container */
+  .chatbot {
     position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 350px;
-    height: 400px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif; /* Apply the font */
-    z-index: 1000; /* Ensure it's above other elements */
-    transition: all 0.3s ease; /* Smooth transition for responsiveness */
+    font-family: "Poppins", sans-serif;
+    z-index: 1000;
   }
   
-  /* Full-screen mode on mobile */
-  @media (max-width: 768px) {
-    .chatbot {
-      position: fixed;
-      top: 0; /* Fullscreen on mobile */
-      left: 0;
-      bottom: 0;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 0; /* Remove rounded corners for fullscreen */
-      box-shadow: none; /* Remove shadow */
-    }
-  }
-  
+  /* Chat Header */
   .chat-header {
-    background-color: #201C51;
+    background-color: #201c51;
     color: white;
     padding: 15px;
     font-size: 18px;
-    font-weight: 700;
-    text-align: center; /* Center align the header text */
+    font-weight: bold;
+    text-align: center;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   .chat-header-close {
-    position: absolute;
-    right: 15px;
-    top: 15px;
     background: none;
     border: none;
     color: white;
@@ -53,60 +49,74 @@
   
   .chat-messages {
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 10px;
+    padding: 15px;
     overflow-y: auto;
     background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
   }
   
-  .chat-message {
-    padding: 10px;
-    margin-bottom: 10px;
+  .chat-messages::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  .chat-messages::-webkit-scrollbar-thumb {
+    background: #ddd;
     border-radius: 10px;
-    max-width: 80%;
-    word-wrap: break-word;
   }
   
-  .user-message {
-    align-self: flex-end;
-    background-color: #daf8cb;
-    color: #333;
-  }
-  
-  .bot-message {
-    align-self: flex-start;
-    background-color: #eaeaea;
-    color: #555;
-  }
-  
+  /* Chat Input */
   .chat-input {
     display: flex;
-    padding: 10px;
+    padding: 10px 15px;
     border-top: 1px solid #ddd;
     background-color: white;
+    position: relative;
   }
   
   .chat-input input {
     flex: 1;
-    padding: 10px;
+    padding: 10px 15px;
     font-size: 16px;
+    border-radius: 25px;
     border: 1px solid #ddd;
-    border-radius: 20px;
     outline: none;
-    margin-right: 10px;
   }
   
   .chat-input button {
-    background-color: #201C51;
-    border: none;
+    background-color: #201c51;
     color: white;
-    padding: 10px 15px;
-    border-radius: 20px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
     cursor: pointer;
+    margin-left: 10px;
   }
   
   .chat-input button:hover {
     background-color: #282364;
+  }
+  
+  /* Chat Message Styles */
+  .chat-message {
+    max-width: 70%;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    word-wrap: break-word;
+    color: white;
+  }
+  
+  .user-message {
+    background-color: #ff7eb9; /* Pink for user */
+    align-self: flex-end; /* Right-align */
+    text-align: right;
+  }
+  
+  .bot-message {
+    background-color: #007bff; /* Blue for bot */
+    align-self: flex-start; /* Left-align */
+    text-align: left;
   }
