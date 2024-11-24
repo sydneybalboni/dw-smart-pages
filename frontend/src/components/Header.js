@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/Header.css";
 import discoveryWorldLogo from "../assets/Discovery-World.svg";
 import { FaBars } from "react-icons/fa";
-import { IoAddCircle } from "react-icons/io5";
+import { IoMdRibbon } from "react-icons/io";
 
 function importAllBadges(r) {
   return r.keys().map(r);
@@ -64,7 +64,7 @@ const Header = () => {
 
       {/* Badge Icon and Dropdown */}
       <div className="badges-button" ref={dropdownRef}>
-        <IoAddCircle
+        <IoMdRibbon
           className="badges-icon"
           onClick={() => toggleDropdown("badges")}
         />
