@@ -43,7 +43,7 @@ const MainPage = () => {
     setBadgesModalOpen(true);
 
     // Disable scrolling when the modal is open
-    document.body.style.overflow = isBadgesModalOpen ? "hidden" : "auto";
+    document.body.style.overflow = "hidden";
 
     // Clean up the scrolling style on unmount or modal close
     return () => {

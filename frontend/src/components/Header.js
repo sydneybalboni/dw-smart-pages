@@ -63,12 +63,21 @@ const Header = () => {
           onClick={() => toggleDropdown("badges")}
         />
         {openDropdown === "badges" && (
-          <div className="dropdown-menu badges-dropdown">
+          <div className="badges-dropdown">
+            <p style={{
+              fontFamily: "Poppins",
+              textAlign: "center",
+              fontSize: "24px",
+              fontWeight: 500,
+              color: "#201c51"
+            }}>
+              Badges
+            </p>
             <div className="image-grid">
               {badges.map((image, index) => (
                 <img key={index} 
                   src={image} 
-                  alt={`Image ${index}`} 
+                  alt='BadgeNotFound'
                   className="grid-item"
                 />
               ))}
