@@ -36,6 +36,8 @@ async def update_settings(new_settings: Settings):
     global settings
     print(f"Updating settings to: {new_settings}")
     settings = new_settings
+    print(f"Settings updated to: {settings}")
+    generate_description(settings.level)
     return {"message": "Settings updated successfully", "settings": settings.dict()}
 
 

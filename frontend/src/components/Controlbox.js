@@ -91,7 +91,7 @@ const ControlBox = ({ onChangeLevel, onLanguageSelect}) => {
         <label>Select Language</label>
         <select value={selectedLang} onChange={handleLanguageSelect}>
           <option value="en-US">English</option>
-          <option value="es-ES">Español</option>
+          <option value="es-MX">Español</option>
           <option value="fr-FR">Français</option>
           <option value="de-DE">Deutsch</option>
           <option value="zh-CN">中文 (Mandarin)</option>
