@@ -6,6 +6,11 @@ import discoveryWorldLogo from "../assets/Discovery-World.svg";
 import { FaBars } from "react-icons/fa";
 import { IoAddCircle } from "react-icons/io5";
 
+function importAllBadges(r) {
+  return r.keys().map(r);
+}
+const badges = importAllBadges(require.context('../assets/badges', false, /\.(png)/))
+
 const Header = () => {
   const [openDropdown, setOpenDropdown] = useState(null); // Track which dropdown is open
   const dropdownRef = useRef(null);
@@ -64,12 +69,28 @@ const Header = () => {
           onClick={() => toggleDropdown("badges")}
         />
         {openDropdown === "badges" && (
-          <div className="dropdown-menu badges-dropdown">
-            <button onClick={() => alert("Badge 1")}>Badge 1</button>
-            <button onClick={() => alert("Badge 2")}>Badge 2</button>
+          <div className="badges-dropdown">
+            <p style={{
+              fontFamily: "Poppins",
+              textAlign: "center",
+              fontSize: "24px",
+              fontWeight: 500,
+              color: "#201c51"
+            }}>
+              Badges
+            </p>
+            <div className="image-grid">
+              {badges.map((image, index) => (
+                <img key={index} 
+                  src={image} 
+                  alt='BadgeNotFound'
+                  className="grid-item"
+                />
+              ))}
+            </div>
           </div>
         )}
-      </div>
+      </div> 
 
       {/* User Icon and Dropdown */}
       <div className="user-profile" ref={dropdownRef}>
@@ -79,10 +100,9 @@ const Header = () => {
         />
         {openDropdown === "account" && (
           <div className="dropdown-menu">
-            <button onClick={() => goToPage("/account")}>Account</button>
-            <button onClick={() => alert("Go to Badge Page")}>Badge</button>
-            <button onClick={() => goToPage("/login")}>Sign In</button>
-          </div>
+          <button onClick={() => goToPage("/account")}>Account</button>
+          <button onClick={() => goToPage("/login")}>Sign In</button>
+        </div>
         )}
       </div>
     </header>
