@@ -6,20 +6,18 @@ import Header from "./components/Header";
 import ExhibitName from "./components/ExhibitName";
 import ExhibitImage from "./components/ExhibitImage";
 import ControlBox from "./components/Controlbox";
-import Exhibit from "./components/Exhibit";
 import ChatBot from "./components/ChatBot";
 import ChatButton from "./components/ChatButton";
-import BadgesModal from './components/BadgesModal';
-import popup from './assets/badges/lakes.png';
 import Trivia from "./components/Trivia"; // Import the Trivia component
+import popup from "./assets/badges/lakes.png";
+import { IoClose } from "react-icons/io5"; // Import Close icon
 import "./App.css";
 
 const MainPage = () => {
   const [level, setLevel] = useState("Beginner");
   const [language, setLanguage] = useState("en-US");
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [isBadgesModalOpen, setBadgesModalOpen] = useState(false); //state of badges pop up
-  const [showTrivia, setShowTrivia] = useState(false);
+  const [isBadgesModalOpen, setBadgesModalOpen] = useState(false);
 
   // Handle TTS functionality
   const handleTTSClick = (text) => {
@@ -28,10 +26,10 @@ const MainPage = () => {
       return;
     }
     try {
-      speechSynthesis.cancel(); // Cancel any ongoing speech
+      speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = language; // Set the current language
-      speechSynthesis.speak(utterance); // Trigger TTS
+      utterance.lang = language;
+      speechSynthesis.speak(utterance);
     } catch (error) {
       console.error("TTS Error:", error);
     }
@@ -40,10 +38,19 @@ const MainPage = () => {
   // Toggle ChatBot visibility
   const toggleChat = () => setIsChatOpen(!isChatOpen);
 
-  useEffect(() => { 
+  useEffect(() => {
+    // Open the modal when the component loads
     setBadgesModalOpen(true);
+
+    // Disable scrolling when the modal is open
+    document.body.style.overflow = isBadgesModalOpen ? "hidden" : "auto";
+
+    // Clean up the scrolling style on unmount or modal close
+    return () => {
+      document.body.style.overflow = "auto";
+    };
   }, []);
- 
+
   return (
     <div className="App">
       {/* Header */}
@@ -64,50 +71,91 @@ const MainPage = () => {
         handleTTSClick={handleTTSClick}
       />
 
-      {/* Exhibit
-      <Exhibit
-        level={level}
-        language={language}
-        handleTTSClick={handleTTSClick}
-      /> */}
-
       {/* ChatBot */}
       {isChatOpen && <ChatBot onClose={toggleChat} />}
       {!isChatOpen && <ChatButton onClick={toggleChat} />}
 
-      {/* Badges Modal Component */}
-      <BadgesModal isOpen={isBadgesModalOpen} 
-      onClose={() => setBadgesModalOpen(false)}>
-        <h2>You have unlocked a new badge!</h2>
-        <img 
-          src= {popup}
-          alt="Unlocked Great Lakes Badge"
-          style={{ 
-            width: "150px",
-            height: "150px",
-            display: "bock",
-            margin: "0 auto 20px auto"
-          }}
-        />
-        <button 
-        onClick={() => setBadgesModalOpen(false)}
-          style={{
-            fontSize: "1.5rem",   // Make the font size larger
-            padding: "10px 20px", // Increase the padding for a bigger button
-            cursor: "pointer",    // Change cursor to pointer
-            backgroundColor: "#201c51", // Button background color (optional)
-            color: "white",       // Button text color (optional)
-            border: "none",       // Remove default border
-            borderRadius: "5px",  // Rounded corners
-            marginTop: "20px"     // Add space between the image and button
-          }}
-        >
-          Close  
-        </button>
-      </BadgesModal>
+      {/* Badges Modal */}
+      {isBadgesModalOpen && (
+        <>
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100vw",
+              height: "100vh",
+              backgroundColor: "rgba(0, 0, 0, 0.5)", // Transparent overlay
+              zIndex: 999,
+            }}
+            onClick={() => setBadgesModalOpen(false)} // Close modal if clicking outside
+          />
+          <div
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)", // Centers the modal
+              backgroundColor: "#ffffff",
+              padding: "20px 30px",
+              borderRadius: "12px",
+              zIndex: 1000,
+              fontFamily: "'Poppins', sans-serif",
+              textAlign: "center",
+              width: "90%",
+              maxWidth: "400px",
+              boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.2)",
+            }}
+          >
+            <IoClose
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                fontSize: "1.5rem",
+                color: "#201c51",
+                cursor: "pointer",
+                transition: "transform 0.2s",
+              }}
+              onMouseEnter={(e) => (e.target.style.transform = "scale(1.2)")}
+              onMouseLeave={(e) => (e.target.style.transform = "scale(1)")}
+              onClick={() => setBadgesModalOpen(false)} // Close the modal when clicking the X
+            />
+            <h2
+              style={{
+                fontSize: "1.8rem",
+                marginBottom: "20px",
+                color: "#201c51",
+                fontWeight: "700",
+              }}
+            >
+              Congratulations!
+            </h2>
+            <p
+              style={{
+                fontSize: "1rem",
+                color: "#333333",
+                marginBottom: "20px",
+              }}
+            >
+              You have unlocked a new badge!
+            </p>
+            <img
+              src={popup}
+              alt="Unlocked Great Lakes Badge"
+              style={{
+                width: "150px",
+                height: "150px",
+                marginBottom: "20px",
+                borderRadius: "8px",
+              }}
+            />
+          </div>
+        </>
+      )}
 
-      {/* Trivia Section - Added Trivia here */}
-      <Trivia /> {/* Trivia component rendered directly */}
+      {/* Trivia Section */}
+      <Trivia />
     </div>
   );
 };
@@ -118,7 +166,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/account" element={<AccountPage />} />
-        <Route path ="/login" element={<LoginSignUp />} />
+        <Route path="/login" element={<LoginSignUp />} />
       </Routes>
     </Router>
   );
