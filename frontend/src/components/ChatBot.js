@@ -7,6 +7,7 @@ import botIcon from "../assets/chatbotdw.png"; // Import your robot icon
 const ChatBot = ({ onClose }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false); // Track loading state
   const socketRef = useRef(null);
   const messagesEndRef = useRef(null);
 
@@ -17,6 +18,7 @@ const ChatBot = ({ onClose }) => {
       const data = JSON.parse(event.data);
       const botMessage = { sender: "bot", text: data.response };
       setMessages((prev) => [...prev, botMessage]);
+      setLoading(false); // Stop loading when response is received
     };
 
     socketRef.current.onerror = (error) => console.error("WebSocket error:", error);
@@ -34,6 +36,7 @@ const ChatBot = ({ onClose }) => {
 
     const userMessage = { sender: "user", text: input };
     setMessages((prev) => [...prev, userMessage]);
+    setLoading(true); // Start loading when a message is sent
 
     if (socketRef.current?.readyState === WebSocket.OPEN) {
       socketRef.current.send(JSON.stringify({ message: input }));
@@ -56,6 +59,18 @@ const ChatBot = ({ onClose }) => {
         {messages.map((msg, index) => (
           <ChatMessage key={index} message={msg} />
         ))}
+
+        {/* Display the "thinking" animation when loading */}
+        {loading && (
+          <div className="thinking-bubble">
+            <div className="dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        )}
+
         <div ref={messagesEndRef}></div>
       </div>
 
@@ -72,7 +87,7 @@ const ChatBot = ({ onClose }) => {
           placeholder="Type a message..."
         />
         <button onClick={handleSend} className="send-button">
-          <FaPaperPlane /> {/* Paper airplane icon */}
+          <FaPaperPlane />
         </button>
       </div>
     </div>
