@@ -11,6 +11,7 @@ import ChatBot from "./components/ChatBot";
 import ChatButton from "./components/ChatButton";
 import BadgesModal from './components/BadgesModal';
 import popup from './assets/badges/lakes.png';
+import Trivia from "./components/Trivia"; // Import the Trivia component
 import "./App.css";
 
 const MainPage = () => {
@@ -18,6 +19,7 @@ const MainPage = () => {
   const [language, setLanguage] = useState("en-US");
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isBadgesModalOpen, setBadgesModalOpen] = useState(false); //state of badges pop up
+  const [showTrivia, setShowTrivia] = useState(false);
 
   // Handle TTS functionality
   const handleTTSClick = (text) => {
@@ -103,6 +105,9 @@ const MainPage = () => {
           Close  
         </button>
       </BadgesModal>
+
+      {/* Trivia Section - Added Trivia here */}
+      <Trivia /> {/* Trivia component rendered directly */}
     </div>
   );
 };
