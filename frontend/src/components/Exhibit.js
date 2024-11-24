@@ -56,30 +56,6 @@ const Exhibit = ({ level, language, handleTTSClick }) => {
           {description}
         </div>
       </div>
-
-      {/* Ipsum Section */}
-      <div className="section ipsum">
-        <div className="header-row">
-          <h2>Ipsum</h2>
-          {/* Play button aligned with the paragraph box */}
-          <div
-            className="play-button"
-            onClick={() => handleTTSClick(description)} // Trigger TTS for Ipsum
-            role="button"
-            aria-label="Play Ipsum Description"
-          >
-            <FaPlay className="play-icon" />
-          </div>
-        </div>
-        {/* Paragraph box */}
-        <div
-          id="ipsum"
-          className="paragraph-box"
-          onClick={() => handleTTSClick(description)} // Trigger TTS when clicking the box
-        >
-          {description}
-        </div>
-      </div>
     </div>
   );
 };
