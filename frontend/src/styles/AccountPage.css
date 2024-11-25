@@ -1,0 +1,51 @@
+.account-page {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f9;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styling */
+  .account-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .account-header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #444;
+  }
+  
+  .account-header h2 {
+    font-size: 1.5rem;
+    color: #666;
+    margin-top: 10px;
+  }
+  
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+  
+  .badge-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    filter: grayscale(100%); /* Grayed out by default */
+    transition: transform 0.2s, filter 0.3s; /* Smooth transition for hover effects */
+  }
+  
+  /* Hover effect for badges */
+  .badge-image:hover {
+    transform: scale(1.1);
+  }

@@ -1,57 +1,44 @@
-/* src/components/Header.css */
-
-/* Header Box Styling */
+/* Header Container */
 .header {
   display: flex;
-  justify-content: center;  /* Center content horizontally */
+  justify-content: space-between; /* Space between logo and user profile */
   align-items: center;
   background-color: #ffffff; /* White background */
-  color: #201c51;  /* Dark color for text */
-  font-size: 2rem;
+  color: #201c51; /* Dark color for text */
+  padding: 10px 20px; /* Padding for spacing */
   width: 100%;
   position: sticky;
   top: 0;
-  margin: 0;  /* Remove margin */
-  position: relative; /* Allow absolute positioning of the logo */
+  z-index: 100; /* Ensure the header stays above other content */
+  margin: 0; /* No extra space */
+  border-top: none; /* Remove any border at the top */ /* Add a subtle shadow */
 }
 
-/* Wrapper to center the Exhibit Name */
-.header-content {
-  display: flex;
-  justify-content: center;  /* Center title */
-  align-items: center;
-  width: 100%;  /* Take up full width */
-  position: absolute;  /* Position the title in the center */
-  left: 0;  /* Ensure it's in the full width */
-  right: 0; /* Ensure it's in the full width */
-}
-
-/* Logo container */
+/* Logo Styling */
 .logo-container {
   display: flex;
   align-items: center;
-  position: absolute;  /* Position logo to the left */
-  left: 30px; /* Distance from the left side */
 }
 
-/* Logo styling */
 .logo {
-  width: 200px;
-  height: 200px;
+  width: 140px;
+  height: auto;
 }
 
 /* Exhibit Name Styling */
 .exhibit-name {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: bold;
   font-family: 'Poppins', sans-serif;  /* Custom Google font */
   color: #201c51;  /* Dark color for visibility */
+  margin: 0;
   text-align: center; /* Ensure it's centered */
 }
 
 .badges-button {
   position: absolute;
   right:80px;
+<<<<<<< HEAD
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -91,22 +78,63 @@
 .user-profile {
   position: absolute;  /* Position user icon in the top right */
   right: 20px;
+=======
+>>>>>>> 3c5bf92ae5f434bf88e99fd56b72a38e43ce3734
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* User Icon Styling */
-.user-icon {
-  font-size: 2.5rem;  /* Make the icon large */
+.badges-icon {
+  font-size: 3rem;
   color: #201c51;
   cursor: pointer;
   transition: color 0.3s ease;
 }
 
+.badges-icon:hover {
+  color: #ef558b;
+}
+
+.badges-dropdown {
+  position: absolute;
+  top: 45px;
+  right: 0px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Google Font import (add this to the HTML or body tag) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+
+/* User Profile Container */
+.user-profile {
+  position: relative; /* Allow dropdown to be positioned relative to this */
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Ensure it's clickable */
+  z-index: auto;
+  margin-right: 10px; /* Add spacing from the right edge */
+}
+
+.user-icon {
+  font-size: 3rem; /* Keep user icon size */
+  color: #201c51;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
 .user-icon:hover {
-  color: #ef558b; /* Change color on hover */
+  color: #ef558b; /* Hover color */
+  transform: scale(1.1); /* Subtle zoom effect */
 }
 
 /* Dropdown Menu Styling */
@@ -135,5 +163,25 @@
 }
 
 .dropdown-menu button:hover {
-  color: #f6a5c0;
+  color: #ef558b;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 15px; /* Adjust padding for smaller screens */
+  }
+
+  .logo {
+    height: 35px; /* Smaller logo for mobile */
+  }
+
+  .user-icon {
+    font-size: 2.2rem; /* Slightly larger for better usability */
+  }
+
+  .dropdown-menu {
+    width: 150px; /* Reduce width for smaller screens */
+    top: 50px; /* Adjust dropdown positioning */
+  }
 }

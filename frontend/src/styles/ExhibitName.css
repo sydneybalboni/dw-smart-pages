@@ -1,0 +1,14 @@
+.exhibit-name-container {
+    text-align: center;
+    margin: 0px 0; /* Space between the header and the image */
+  }
+  
+  .exhibit-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif; /* Custom font */
+    color: #201c51; /* Match design theme */
+    text-transform: uppercase; /* Optional: make the name uppercase */
+    margin: 0;
+  }
+  
