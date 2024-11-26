@@ -1,5 +1,10 @@
+# Discovery World Smart Pages
+### **Made by Adam Swedlund, Mason Beynon, Zoe Kirkman, Reagan Burkemper, Michael Wood, Kathlyn Leanos, and Sydney Balboni**
+Made for the 2024 MSOE Hacksgiving Hackathon, this project centers around an AI-Generated Exhibit Explorer designed to enhance visitor engagement and learning experiences at exhibits. By integrating features like multilingual text-to-speech, dynamic reading level adjustments, and interactive trivia questions, the solution promotes accessibility and personalization for diverse audiences. Visitors can collect badges, fostering motivation to explore more and return for future visits. This innovative system offers a mobile-friendly interface with seamless integration and scalability, using cost-effective AI and data storage solutions to deliver an educational, dynamic, and inclusive exhibit experience.
 
-# Project Setup Instructions
+![GIF demo of application](images/dw_smart_pages_demo-ezgif.com-crop.gif)
+
+## Project Setup Instructions
 
 This repository contains both a frontend (Node.js-based) and a backend (Python FastAPI-based). Follow the steps below to set up and run each part of the project.
 
